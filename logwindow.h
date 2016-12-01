@@ -26,6 +26,7 @@ private:
   void on_notification_from_worker_thread();
   void update_start_stop_buttons();
   void update_widgets();
+  void on_treeview_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
 
     class Log_Columns : public Gtk::TreeModel::ColumnRecord
   {
