@@ -67,7 +67,6 @@ LogWindow::LogWindow()
   //Create the Tree model:
   m_refTreeModel = Gtk::ListStore::create(l_columns);
   m_TreeView.set_model(m_refTreeModel);
-  refTreeSelection = m_TreeView.get_selection();
 
   
 
