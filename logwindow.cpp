@@ -67,6 +67,7 @@ LogWindow::LogWindow()
   //Create the Tree model:
   m_refTreeModel = Gtk::ListStore::create(l_columns);
   m_TreeView.set_model(m_refTreeModel);
+  
 
   
 
@@ -83,7 +84,8 @@ LogWindow::LogWindow()
   m_TreeView.append_column("UE ID", l_columns.UE_ID);
   m_TreeView.append_column("INFO", l_columns.Info);
 
-  
+  m_TreeView.signal_row_activated().connect(sigc::mem_fun(*this,
+              &LogWindow::on_treeview_row_activated) );
   show_all_children();
 }
 
@@ -183,6 +185,17 @@ void LogWindow::on_stop_button_clicked()
     m_Worker.stop_work();
     Stop_Button.set_sensitive(false);
     m_Button_All.set_sensitive(true);
+  }
+}
+
+void LogWindow::on_treeview_row_activated(const Gtk::TreeModel::Path& path,
+        Gtk::TreeViewColumn* column)
+{
+  refTreeSelection = m_TreeView.get_selection();
+  Gtk::TreeModel::iterator iter = refTreeSelection->get_selected();
+  {
+    Gtk::TreeModel::Row row_sel = *iter;
+    std::cout << "Row activated: ID=" << row_sel << std::endl;
   }
 }
 /*void LogWindow::on_button_all()
