@@ -1,0 +1,2894 @@
+# lteenb version 2016-06-16 
+# Log file format:
+# time layer dir ue_id {cell_id rnti sfn channel:} message
+# Cell 0x01: earfcn=1575 pci=1 mode=FDD
+# DL: n_rb_dl=100 cyclic_prefix=0
+# UL: n_rb_ul=100 cyclic_prefix=0 prach_config_index=4 prach_freq_offset=8 delta_pucch_shift=2 n_rb_cqi=8 n_cs_an=0
+# PUCCH allocation:
+# Type     RBs    n
+# 2/2a/2b    8   48
+# Start of PUCCH ACK/NACK=12
+# RBs reserved for PUCCH: 12 12 12 12 12 12 12 12 12 12
+# SR resource count=480
+# CQI resource count=1920
+# SRS resources: offsets=8 freqs=2 total=32
+# GBR limits: DL=10.995 Mre/s UL=9.969 Mre/s
+13:34:47.128 [MAC] -  0001 Allocating new UE
+13:34:47.128 [MAC] DL    - RAR: rapid=36
+	rapid=36
+	  ta=1
+	  ul_grant:
+	    hopping_flag=0
+	    riv=0x186
+	    mcs=0
+	    tpc_command=3
+	    ul_delay=0
+	    csi_request=0
+	  tc-rnti=0x003d
+13:34:47.138 [MAC] UL 0001 LCID:0 len=6 PAD: len=2 
+13:34:47.138 [RRC] UL 0001 CCCH: RRC Connection Request
+        {
+          message c1: rrcConnectionRequest: {
+            criticalExtensions rrcConnectionRequest-r8: {
+              ue-Identity randomValue: '6CFD33C938'H,
+              establishmentCause mo-Signalling,
+              spare '0'B
+            }
+          }
+        }
+
+13:34:47.138 [RRC] DL 0001 CCCH: RRC Connection Setup
+        {
+          message c1: rrcConnectionSetup: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions c1: rrcConnectionSetup-r8: {
+              radioResourceConfigDedicated {
+                srb-ToAddModList {
+                  {
+                    srb-Identity 1,
+                    rlc-Config defaultValue: NULL,
+                    logicalChannelConfig defaultValue: NULL
+                  }
+                },
+                mac-MainConfig explicitValue: {
+                  ul-SCH-Config {
+                    maxHARQ-Tx n5,
+                    periodicBSR-Timer sf20,
+                    retxBSR-Timer sf320,
+                    ttiBundling FALSE
+                  },
+                  drx-Config release: NULL,
+                  timeAlignmentTimerDedicated infinity,
+                  phr-Config setup: {
+                    periodicPHR-Timer sf500,
+                    prohibitPHR-Timer sf200,
+                    dl-PathlossChange dB3
+                  }
+                },
+                physicalConfigDedicated {
+                  pdsch-ConfigDedicated {
+                    p-a dB0
+                  },
+                  pucch-ConfigDedicated {
+                    ackNackRepetition release: NULL
+                  },
+                  pusch-ConfigDedicated {
+                    betaOffset-ACK-Index 9,
+                    betaOffset-RI-Index 6,
+                    betaOffset-CQI-Index 6
+                  },
+                  uplinkPowerControlDedicated {
+                    p0-UE-PUSCH 0,
+                    deltaMCS-Enabled en0,
+                    accumulationEnabled TRUE,
+                    p0-UE-PUCCH 0,
+                    pSRS-Offset 3
+                  },
+                  cqi-ReportConfig {
+                    nomPDSCH-RS-EPRE-Offset 0,
+                    cqi-ReportPeriodic setup: {
+                      cqi-PUCCH-ResourceIndex 0,
+                      cqi-pmi-ConfigIndex 38,
+                      cqi-FormatIndicatorPeriodic widebandCQI: NULL,
+                      simultaneousAckNackAndCQI FALSE
+                    }
+                  },
+                  soundingRS-UL-ConfigDedicated setup: {
+                    srs-Bandwidth bw1,
+                    srs-HoppingBandwidth hbw0,
+                    freqDomainPosition 0,
+                    duration TRUE,
+                    srs-ConfigIndex 37,
+                    transmissionComb 0,
+                    cyclicShift cs0
+                  },
+                  schedulingRequestConfig setup: {
+                    sr-PUCCH-ResourceIndex 0,
+                    sr-ConfigIndex 35,
+                    dsr-TransMax n4
+                  }
+                }
+              }
+            }
+          }
+        }
+
+13:34:47.138 [MAC] DL 0001 PAD: len=0 UECRI: 56 cf d3 3c 93 86 LCID:0 len=23 
+13:34:47.199 [MAC] UL 0001 PHR: ph=63 SBSR: lcg=0 b=11 LCID:1 len=37 
+13:34:47.207 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:1 len=48 PAD: len=54 
+13:34:47.207 [RRC] UL 0001 DCCH: RRC Connection Setup Complete
+        {
+          message c1: rrcConnectionSetupComplete: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions c1: rrcConnectionSetupComplete-r8: {
+              selectedPLMN-Identity 1,
+              dedicatedInfoNAS '07417208091010103254769804E060C04000240201D011D1271D8080211001000010810600000000830600000000000D00000A000010005C0A003103E5E0349011035758A65D0100C1'H
+            }
+          }
+        }
+
+13:34:47.207 [NAS] UL 0001 EMM: Attach request
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x0 (Plain NAS message, not security protected)
+        Message type = 0x41 (Attach request)
+        EPS attach type = 2 (combined EPS/IMSI attach)
+        NAS key set identifier:
+          TSC = 0
+          NAS key set identifier = 7
+        Old GUTI or IMSI:
+          IMSI = 001010123456789
+        UE network capability:
+          Length = 4
+          Data = e0 60 c0 40
+        ESM message container:
+          Protocol discriminator = 0x2 (EPS Session Management)
+          EPS bearer identity = 0
+          Procedure transaction identity = 1
+          Message type = 0xd0 (PDN connectivity request)
+          Request type = 1
+          PDN type = 1 (IPv4)
+          ESM information transfer flag = 1
+          Protocol configuration options:
+            ext = 1
+            configuration protocol = 0
+            Protocol ID = 0x8021 (IPCP)
+            Data = 01 00 00 10 81 06 00 00 00 00 83 06 00 00 00 00
+            Protocol ID = 0x000d (DNS Server IPv4 Address Request)
+            Data =
+            Protocol ID = 0x000a (IP address allocation via NAS signalling)
+            Data =
+            Protocol ID = 0x0010 (IPv4 Link MTU Request)
+            Data =
+        DRX parameter:
+          Data = 0a 00
+        MS network capability:
+          Length = 3
+          Data = e5 e0 34
+        TMSI status = 0
+        Mobile station classmark 2:
+          Length = 3
+          Data = 57 58 a6
+        Voice domain preference and UE's usage setting = 0x0 (CS voice only, Voice centric)
+        MS network feature support = 0x1 (MS supports the extended periodic timer in this domain)
+13:34:47.207 [MAC] DL 0001 LCID:1 len=2 PAD: len=4 
+13:34:47.208 [NAS] DL 0001 EMM: Authentication request
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x0 (Plain NAS message, not security protected)
+        Message type = 0x52 (Authentication request)
+        NAS key set identifier:
+          TSC = 0
+          NAS key set identifier = 0
+        Authentication parameter RAND:
+          Data = 20 d7 dd 97 2d 02 d5 30 cd 3b 01 6c 4e d6 ff a7
+        Authentication parameter AUTN:
+          Length = 16
+          Data = a4 69 57 b3 47 64 90 01 20 c6 ff a4 69 76 23 46
+13:34:47.208 [RRC] DL 0001 DCCH: DL Information Transfer
+        {
+          message c1: dlInformationTransfer: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions c1: dlInformationTransfer-r8: {
+              dedicatedInfoType dedicatedInfoNAS: '07520020D7DD972D02D530CD3B016C4ED6FFA710A46957B34764900120C6FFA469762346'H
+            }
+          }
+        }
+
+13:34:47.209 [MAC] DL 0001 LCID:1 len=46 
+13:34:47.231 [MAC] UL 0001 SBSR: lcg=0 b=0 LCID:1 len=2 PAD: len=106 
+13:34:47.270 [MAC] UL 0001 SBSR: lcg=0 b=0 LCID:1 len=21 PAD: len=107 
+13:34:47.270 [RRC] UL 0001 DCCH: UL Information Transfer
+        {
+          message c1: ulInformationTransfer: {
+            criticalExtensions c1: ulInformationTransfer-r8: {
+              dedicatedInfoType dedicatedInfoNAS: '07530820C6FFA46957B347'H
+            }
+          }
+        }
+
+13:34:47.270 [NAS] UL 0001 EMM: Authentication response
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x0 (Plain NAS message, not security protected)
+        Message type = 0x53 (Authentication response)
+        Authentication response parameter:
+          Length = 8
+          Data = 20 c6 ff a4 69 57 b3 47
+13:34:47.271 [MAC] DL 0001 LCID:1 len=2 PAD: len=84 
+13:34:47.272 [NAS] DL 0001 EMM: Security mode command
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x3 (Integrity protected with new EPS security context)
+        Auth code = 0xe0d1ec8f
+        Sequence number = 0x00
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x0 (Plain NAS message, not security protected)
+        Message type = 0x5d (Security mode command)
+        Selected NAS security algorithms = 1
+        NAS key set identifier:
+          TSC = 0
+          NAS key set identifier = 0
+        Replayed UE security capabilities:
+          Length = 5
+          Data = e0 60 c0 40 70
+        IMEISV request = 1
+13:34:47.272 [RRC] DL 0001 DCCH: DL Information Transfer
+        {
+          message c1: dlInformationTransfer: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions c1: dlInformationTransfer-r8: {
+              dedicatedInfoType dedicatedInfoNAS: '37E0D1EC8F00075D010005E060C04070C1'H
+            }
+          }
+        }
+
+13:34:47.273 [MAC] DL 0001 LCID:1 len=27 PAD: len=59 
+13:34:47.311 [MAC] UL 0001 SBSR: lcg=0 b=0 LCID:1 len=2 LCID:1 len=29 PAD: len=67 
+13:34:47.311 [RRC] UL 0001 DCCH: UL Information Transfer
+        {
+          message c1: ulInformationTransfer: {
+            criticalExtensions c1: ulInformationTransfer-r8: {
+              dedicatedInfoType dedicatedInfoNAS: '47B0CC085C00075E23093335050216947806F5'H
+            }
+          }
+        }
+
+13:34:47.311 [NAS] UL 0001 EMM: Security mode complete
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x4 (Integrity protected and ciphered with new EPS security context)
+        Auth code = 0xb0cc085c
+        Sequence number = 0x00
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x0 (Plain NAS message, not security protected)
+        Message type = 0x5e (Security mode complete)
+        IMEISV:
+          IMEISV = 3535020614987605
+13:34:47.311 [MAC] DL 0001 LCID:1 len=2 PAD: len=84 
+13:34:47.312 [NAS] DL 0001 ESM: ESM information request
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x2 (Integrity protected and ciphered)
+        Auth code = 0xe4f1f731
+        Sequence number = 0x01
+        Protocol discriminator = 0x2 (EPS Session Management)
+        EPS bearer identity = 0
+        Procedure transaction identity = 1
+        Message type = 0xd9 (ESM information request)
+13:34:47.312 [RRC] DL 0001 DCCH: DL Information Transfer
+        {
+          message c1: dlInformationTransfer: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions c1: dlInformationTransfer-r8: {
+              dedicatedInfoType dedicatedInfoNAS: '27E4F1F731010201D9'H
+            }
+          }
+        }
+
+13:34:47.313 [MAC] DL 0001 LCID:1 len=19 PAD: len=67 
+13:34:47.351 [MAC] UL 0001 SBSR: lcg=0 b=0 LCID:1 len=2 LCID:1 len=30 PAD: len=94 
+13:34:47.351 [RRC] UL 0001 DCCH: UL Information Transfer
+        {
+          message c1: ulInformationTransfer: {
+            criticalExtensions c1: ulInformationTransfer-r8: {
+              dedicatedInfoType dedicatedInfoNAS: '27C84DE532010201DA280908696E7465726E6574'H
+            }
+          }
+        }
+
+13:34:47.351 [NAS] UL 0001 ESM: ESM information response
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x2 (Integrity protected and ciphered)
+        Auth code = 0xc84de532
+        Sequence number = 0x01
+        Protocol discriminator = 0x2 (EPS Session Management)
+        EPS bearer identity = 0
+        Procedure transaction identity = 1
+        Message type = 0xda (ESM information response)
+        Access point name = "internet"
+13:34:47.351 [MAC] DL 0001 LCID:1 len=2 PAD: len=72 
+13:34:47.351 [RRC] DL 0001 DCCH: Security Mode Command
+        {
+          message c1: securityModeCommand: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions c1: securityModeCommand-r8: {
+              securityConfigSMC {
+                securityAlgorithmConfig {
+                  cipheringAlgorithm eea0,
+                  integrityProtAlgorithm eia1
+                }
+              }
+            }
+          }
+        }
+
+13:34:47.353 [MAC] DL 0001 LCID:1 len=10 PAD: len=64 
+13:34:47.391 [MAC] UL 0001 SBSR: lcg=0 b=0 LCID:1 len=2 LCID:1 len=9 PAD: len=95 
+13:34:47.391 [RRC] UL 0001 DCCH: Security Mode Complete
+        {
+          message c1: securityModeComplete: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions securityModeComplete-r8: {
+            }
+          }
+        }
+
+13:34:47.391 [RRC] DL 0001 DCCH: UE Capability Enquiry
+        {
+          message c1: ueCapabilityEnquiry: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions c1: ueCapabilityEnquiry-r8: {
+              ue-CapabilityRequest {
+                eutra
+              }
+            }
+          }
+        }
+
+13:34:47.391 [MAC] DL 0001 LCID:1 len=2 LCID:1 len=10 PAD: len=60 
+13:34:47.431 [MAC] UL 0001 SBSR: lcg=0 b=0 LCID:1 len=2 LCID:1 len=103 PAD: len=21 
+13:34:47.431 [RRC] UL 0001 DCCH: UE Capability Information
+        {
+          message c1: ueCapabilityInformation: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions c1: ueCapabilityInformation-r8: {
+              ue-CapabilityRAT-ContainerList {
+                {
+                  rat-Type eutra,
+                  ueCapabilityRAT-Container {
+                    accessStratumRelease rel10,
+                    ue-Category 4,
+                    pdcp-Parameters {
+                      supportedROHC-Profiles {
+                        profile0x0001 TRUE,
+                        profile0x0002 TRUE,
+                        profile0x0003 FALSE,
+                        profile0x0004 FALSE,
+                        profile0x0006 FALSE,
+                        profile0x0101 FALSE,
+                        profile0x0102 FALSE,
+                        profile0x0103 FALSE,
+                        profile0x0104 FALSE
+                      }
+                    },
+                    phyLayerParameters {
+                      ue-TxAntennaSelectionSupported FALSE,
+                      ue-SpecificRefSigsSupported FALSE
+                    },
+                    rf-Parameters {
+                      supportedBandListEUTRA {
+                        {
+                          bandEUTRA 1,
+                          halfDuplex FALSE
+                        },
+                        {
+                          bandEUTRA 2,
+                          halfDuplex FALSE
+                        },
+                        {
+                          bandEUTRA 3,
+                          halfDuplex FALSE
+                        },
+                        {
+                          bandEUTRA 4,
+                          halfDuplex FALSE
+                        },
+                        {
+                          bandEUTRA 5,
+                          halfDuplex FALSE
+                        },
+                        {
+                          bandEUTRA 7,
+                          halfDuplex FALSE
+                        },
+                        {
+                          bandEUTRA 17,
+                          halfDuplex FALSE
+                        }
+                      }
+                    },
+                    measParameters {
+                      bandListEUTRA {
+                        {
+                          interFreqBandList {
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            }
+                          },
+                          interRAT-BandList {
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            }
+                          }
+                        },
+                        {
+                          interFreqBandList {
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            }
+                          },
+                          interRAT-BandList {
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            }
+                          }
+                        },
+                        {
+                          interFreqBandList {
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            }
+                          },
+                          interRAT-BandList {
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            }
+                          }
+                        },
+                        {
+                          interFreqBandList {
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            }
+                          },
+                          interRAT-BandList {
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            }
+                          }
+                        },
+                        {
+                          interFreqBandList {
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            }
+                          },
+                          interRAT-BandList {
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            }
+                          }
+                        },
+                        {
+                          interFreqBandList {
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            }
+                          },
+                          interRAT-BandList {
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            }
+                          }
+                        },
+                        {
+                          interFreqBandList {
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            },
+                            {
+                              interFreqNeedForGaps TRUE
+                            }
+                          },
+                          interRAT-BandList {
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            },
+                            {
+                              interRAT-NeedForGaps TRUE
+                            }
+                          }
+                        }
+                      }
+                    },
+                    featureGroupIndicators  '5e0dfc82'H /*
+                       2: PUCCH 2a/2b, abs TPC, RB alloc type 1 for PDSCH, Periodic CQI/PMI/RI reporting on PUCCH: Modes 2-0 and 2-1
+                       4: Short DRX cycle
+                       5: Long DRX cycle, DRX Mac CE
+                       6: Prioritized bit rate
+                       7: RLC UM
+                      13: Inter-frequency handover
+                      14: Event measurement reporting A4 and A5
+                      16: Periodical measurement, reportStrongestCells
+                      17: Intra-frequency ANR features
+                      18: Inter-frequency ANR features
+                      19: Inter-RAT ANR features
+                      20: SRB1 and SRB2 for DCCH + 8x DRB
+                      21: freq hopping with N_sb > 1
+                      22: Measurement: event B2 UTRAN
+                      25: Inter-frequency measurements and reporting in E-UTRA connected mode
+                      31: MFBI
+                    */,
+                    interRAT-Parameters {
+                      utraFDD {
+                        supportedBandListUTRA-FDD {
+                          bandI,
+                          bandII,
+                          bandV
+                        }
+                      },
+                      geran {
+                        supportedBandListGERAN {
+                          gsm850,
+                          gsm900E,
+                          gsm1800,
+                          gsm1900
+                        },
+                        interRAT-PS-HO-ToGERAN FALSE
+                      }
+                    },
+                    nonCriticalExtension {
+                      phyLayerParameters-v920 {
+                      },
+                      interRAT-ParametersGERAN-v920 {
+                        e-RedirectionGERAN-r9 supported
+                      },
+                      interRAT-ParametersUTRA-v920 {
+                        e-RedirectionUTRA-r9 supported
+                      },
+                      csg-ProximityIndicationParameters-r9 {
+                        utran-ProximityIndication-r9 supported
+                      },
+                      neighCellSI-AcquisitionParameters-r9 {
+                      },
+                      son-Parameters-r9 {
+                        rach-Report-r9 supported
+                      },
+                      nonCriticalExtension {
+                        lateNonCriticalExtension {
+                          featureGroupIndRel9Add-r9 'C0000000'H
+                        },
+                        nonCriticalExtension {
+                          rf-Parameters-v1020 {
+                            supportedBandCombination-r10 {
+                              {
+                                {
+                                  bandEUTRA-r10 2,
+                                  bandParametersUL-r10 {
+                                    {
+                                      ca-BandwidthClassUL-r10 a
+                                    }
+                                  },
+                                  bandParametersDL-r10 {
+                                    {
+                                      ca-BandwidthClassDL-r10 a,
+                                      supportedMIMO-CapabilityDL-r10 twoLayers
+                                    }
+                                  }
+                                },
+                                {
+                                  bandEUTRA-r10 17,
+                                  bandParametersDL-r10 {
+                                    {
+                                      ca-BandwidthClassDL-r10 a,
+                                      supportedMIMO-CapabilityDL-r10 twoLayers
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                {
+                                  bandEUTRA-r10 4,
+                                  bandParametersUL-r10 {
+                                    {
+                                      ca-BandwidthClassUL-r10 a
+                                    }
+                                  },
+                                  bandParametersDL-r10 {
+                                    {
+                                      ca-BandwidthClassDL-r10 a,
+                                      supportedMIMO-CapabilityDL-r10 twoLayers
+                                    }
+                                  }
+                                },
+                                {
+                                  bandEUTRA-r10 17,
+                                  bandParametersDL-r10 {
+                                    {
+                                      ca-BandwidthClassDL-r10 a,
+                                      supportedMIMO-CapabilityDL-r10 twoLayers
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                {
+                                  bandEUTRA-r10 17,
+                                  bandParametersUL-r10 {
+                                    {
+                                      ca-BandwidthClassUL-r10 a
+                                    }
+                                  },
+                                  bandParametersDL-r10 {
+                                    {
+                                      ca-BandwidthClassDL-r10 a,
+                                      supportedMIMO-CapabilityDL-r10 twoLayers
+                                    }
+                                  }
+                                },
+                                {
+                                  bandEUTRA-r10 2,
+                                  bandParametersDL-r10 {
+                                    {
+                                      ca-BandwidthClassDL-r10 a,
+                                      supportedMIMO-CapabilityDL-r10 twoLayers
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          measParameters-v1020 {
+                            bandCombinationListEUTRA-r10 {
+                              {
+                                interFreqBandList {
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  }
+                                },
+                                interRAT-BandList {
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  }
+                                }
+                              },
+                              {
+                                interFreqBandList {
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  }
+                                },
+                                interRAT-BandList {
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  }
+                                }
+                              },
+                              {
+                                interFreqBandList {
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  },
+                                  {
+                                    interFreqNeedForGaps TRUE
+                                  }
+                                },
+                                interRAT-BandList {
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  },
+                                  {
+                                    interRAT-NeedForGaps TRUE
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          featureGroupIndRel10-r10 '00240000'H,
+                          ue-BasedNetwPerfMeasParameters-r10 {
+                            loggedMeasurementsIdle-r10 supported
+                          },
+                          nonCriticalExtension {
+                            rf-Parameters-v1060 {
+                              supportedBandCombinationExt-r10 {
+                                {
+                                },
+                                {
+                                },
+                                {
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+13:34:47.431 [NAS] DL 0001 EMM: Attach accept
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x2 (Integrity protected and ciphered)
+        Auth code = 0x06830934
+        Sequence number = 0x02
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x0 (Plain NAS message, not security protected)
+        Message type = 0x42 (Attach accept)
+        EPS attach result = 2 (combined EPS/IMSI attach)
+        T3412 value:
+          value = 30
+          unit = 1 (1 minute)
+        TAI list:
+          Length = 6
+          Data = 00 00 f1 10 00 01
+        ESM message container:
+          Protocol discriminator = 0x2 (EPS Session Management)
+          EPS bearer identity = 5
+          Procedure transaction identity = 1
+          Message type = 0xc1 (Activate default EPS bearer context request)
+          EPS Qos:
+            Length = 1
+            Data = 09
+          Access point name = "internet"
+          PDN address:
+            PDN type = 1 (IPv4)
+            IPv4 = 192.168.3.2
+          Protocol configuration options:
+            ext = 1
+            configuration protocol = 0
+            Protocol ID = 0x8021 (IPCP)
+            Data = 03 00 00 0a 81 06 08 08 08 08
+        GUTI:
+          MCC = 001
+          MNC = 01 
+          MME Group ID = 32769
+          MME Code = 1
+          M-TMSI = 0x81fd3b6a
+        Location area identification:
+          Data = 00 f1 10 00 01
+        MS identity:
+          Length = 5
+          Data = f4 81 fd 3b 6a
+        EPS network feature support = 0x1 (IMS voice over PS session in S1 mode supported, Emergency bearer services in S1 mode not supported, Location services via EPC not supported, No information about support of location services via CS domain is available, Network does not support use of EXTENDED SERVICE REQUEST to request for packet services)
+13:34:47.431 [RRC] DL 0001 DCCH: RRC Connection Reconfiguration
+        {
+          message c1: rrcConnectionReconfiguration: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions c1: rrcConnectionReconfiguration-r8: {
+              dedicatedInfoNASList {
+                '2706830934020742023E060000F110000100255201C101090908696E7465726E65740501C0A80302270E8080210A0300000A810608080808500BF600F11080010181FD3B6A1300F11000012305F481FD3B6A640101'H
+              },
+              radioResourceConfigDedicated {
+                srb-ToAddModList {
+                  {
+                    srb-Identity 2,
+                    rlc-Config defaultValue: NULL,
+                    logicalChannelConfig defaultValue: NULL
+                  }
+                },
+                drb-ToAddModList {
+                  {
+                    eps-BearerIdentity 5,
+                    drb-Identity 1,
+                    pdcp-Config {
+                      discardTimer infinity,
+                      rlc-AM {
+                        statusReportRequired TRUE
+                      },
+                      headerCompression notUsed: NULL
+                    },
+                    rlc-Config am: {
+                      ul-AM-RLC {
+                        t-PollRetransmit ms80,
+                        pollPDU p64,
+                        pollByte kB125,
+                        maxRetxThreshold t4
+                      },
+                      dl-AM-RLC {
+                        t-Reordering ms80,
+                        t-StatusProhibit ms60
+                      }
+                    },
+                    logicalChannelIdentity 3,
+                    logicalChannelConfig {
+                      ul-SpecificParameters {
+                        priority 13,
+                        prioritisedBitRate infinity,
+                        bucketSizeDuration ms100,
+                        logicalChannelGroup 2
+                      }
+                    }
+                  }
+                },
+                physicalConfigDedicated {
+                  cqi-ReportConfig {
+                    nomPDSCH-RS-EPRE-Offset 0,
+                    cqi-ReportPeriodic setup: {
+                      cqi-PUCCH-ResourceIndex 0,
+                      cqi-pmi-ConfigIndex 38,
+                      cqi-FormatIndicatorPeriodic widebandCQI: NULL,
+                      simultaneousAckNackAndCQI TRUE
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+13:34:47.431 [MAC] DL 0001 LCID:1 len=2 LCID:1 len=113 PAD: len=37 
+13:34:47.471 [MAC] UL 0001 SBSR: lcg=0 b=0 LCID:1 len=2 LCID:1 len=9 LCID:2 len=23 PAD: len=62 
+13:34:47.471 [RRC] UL 0001 DCCH: RRC Connection Reconfiguration Complete
+        {
+          message c1: rrcConnectionReconfigurationComplete: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions rrcConnectionReconfigurationComplete-r8: {
+            }
+          }
+        }
+
+13:34:47.471 [RRC] UL 0001 DCCH: UL Information Transfer
+        {
+          message c1: ulInformationTransfer: {
+            criticalExtensions c1: ulInformationTransfer-r8: {
+              dedicatedInfoType dedicatedInfoNAS: '2766CDD26A02074300035200C2'H
+            }
+          }
+        }
+
+13:34:47.471 [NAS] UL 0001 EMM: Attach complete
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x2 (Integrity protected and ciphered)
+        Auth code = 0x66cdd26a
+        Sequence number = 0x02
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x0 (Plain NAS message, not security protected)
+        Message type = 0x43 (Attach complete)
+        ESM message container:
+          Protocol discriminator = 0x2 (EPS Session Management)
+          EPS bearer identity = 5
+          Procedure transaction identity = 0
+          Message type = 0xc2 (Activate default EPS bearer context accept)
+13:34:47.471 [MAC] DL 0001 LCID:1 len=2 LCID:2 len=2 PAD: len=68 
+13:34:47.471 [NAS] DL 0001 EMM: EMM information
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x2 (Integrity protected and ciphered)
+        Auth code = 0x559d08d7
+        Sequence number = 0x03
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x0 (Plain NAS message, not security protected)
+        Message type = 0x61 (EMM information)
+        Full name for network:
+          Length = 16
+          Data = 81 c1 76 58 9e 9e bf cd 74 90 b3 4c bf bf e5 6b
+        Short name for network:
+          Length = 9
+          Data = 81 c1 76 58 9e 9e bf cd 74
+        Local time zone = 105
+        Universal time and local time zone:
+          Data = 61 01 41 71 43 74 69
+        Network daylight saving time:
+          Length = 1
+          Data = 01
+13:34:47.471 [RRC] DL 0001 DCCH: DL Information Transfer
+        {
+          message c1: dlInformationTransfer: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions c1: dlInformationTransfer-r8: {
+              dedicatedInfoType dedicatedInfoNAS: '27559D08D7030761431081C176589E9EBFCD7490B34CBFBFE56B450981C176589E9EBFCD7446694761014171437469490101'H
+            }
+          }
+        }
+
+13:34:47.473 [MAC] DL 0001 LCID:1 len=60 PAD: len=14 
+13:34:47.511 [MAC] UL 0001 SBSR: lcg=0 b=0 LCID:1 len=2 PAD: len=126 
+13:34:47.991 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=62 
+13:34:47.991 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:48.071 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=56 
+13:34:48.071 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:49.191 [MAC] UL 0001 PHR: ph=48 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=50 
+13:34:49.191 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:50.991 [MAC] DL 0001 LCID:3 len=295 PAD: len=18 
+13:34:51.031 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:34:52.998 [MAC] UL 0001 PHR: ph=53 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=42 
+13:34:52.999 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:53.079 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=56 
+13:34:53.079 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:54.071 [MAC] UL 0001 PHR: ph=51 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=52 
+13:34:54.071 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:54.191 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:34:54.191 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:56.000 [MAC] DL 0001 LCID:3 len=397 PAD: len=68 
+13:34:56.031 [MAC] UL 0001 PHR: ph=49 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:34:56.791 [MAC] UL 0001 PHR: ph=48 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=52 
+13:34:56.791 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:57.991 [MAC] UL 0001 PHR: ph=46 SBSR: lcg=2 b=13 LCID:3 len=128 
+13:34:57.999 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=64 PAD: len=16 
+13:34:57.999 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:58.070 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=56 
+13:34:58.071 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:58.551 [MAC] UL 0001 PHR: ph=50 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=59 
+13:34:58.551 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:58.991 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=69 PAD: len=59 
+13:34:58.991 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:34:59.070 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=52 
+13:34:59.071 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:34:59.151 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=55 
+13:34:59.151 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:34:59.191 [MAC] UL 0001 SBSR: lcg=2 b=16 LCID:3 len=130 
+13:34:59.198 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=100 PAD: len=14 
+13:34:59.210 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:34:59.471 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:34:59.471 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:34:59.790 [MAC] DL 0001 LCID:3 len=102 PAD: len=44 
+13:34:59.792 [MAC] DL 0001 LCID:3 len=1182 PAD: len=53 
+13:34:59.831 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:35:01.791 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=32 
+13:35:01.791 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:03.031 [MAC] UL 0001 PHR: ph=53 SBSR: lcg=2 b=13 LCID:3 len=128 
+13:35:03.039 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=64 PAD: len=8 
+13:35:03.039 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:03.111 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=56 
+13:35:03.111 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:03.551 [MAC] UL 0001 PHR: ph=53 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=59 
+13:35:03.551 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:03.990 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=69 PAD: len=59 
+13:35:03.991 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:04.071 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=52 
+13:35:04.071 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:04.150 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=55 
+13:35:04.150 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:04.191 [MAC] UL 0001 SBSR: lcg=2 b=17 LCID:3 len=110 
+13:35:04.199 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=120 PAD: len=6 
+13:35:04.211 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:04.471 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:35:04.471 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:04.791 [MAC] DL 0001 LCID:3 len=1283 PAD: len=0 
+13:35:04.830 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:35:06.790 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=52 
+13:35:06.791 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:08.031 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=19 LCID:3 len=100 
+13:35:08.038 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=157 PAD: len=12 
+13:35:08.039 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:08.111 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=32 
+13:35:08.111 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:08.551 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=47 
+13:35:08.551 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:08.991 [MAC] UL 0001 SBSR: lcg=2 b=6 LCID:3 len=118 
+13:35:08.998 [MAC] UL 0001 PAD: len=0 LBSR: b=0 0 0 0 LCID:3 len=22 
+13:35:08.999 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:09.070 [MAC] UL 0001 PHR: ph=55 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=52 
+13:35:09.070 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:09.151 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=31 
+13:35:09.151 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:09.190 [MAC] UL 0001 SBSR: lcg=2 b=24 LCID:3 len=110 
+13:35:09.199 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=346 PAD: len=83 
+13:35:09.210 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:09.470 [MAC] UL 0001 SBSR: lcg=2 b=10 LCID:3 len=110 
+13:35:09.479 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=44 
+13:35:09.479 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:09.792 [MAC] DL 0001 LCID:3 len=1885 PAD: len=19 
+13:35:09.839 [MAC] UL 0001 PHR: ph=51 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=116 
+13:35:10.831 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=0 LCID:3 len=84 PAD: len=14 
+13:35:10.831 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:11.791 [MAC] UL 0001 PHR: ph=49 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=32 
+13:35:11.791 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:13.031 [MAC] UL 0001 PHR: ph=50 SBSR: lcg=2 b=17 LCID:3 len=128 
+13:35:13.039 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=128 
+13:35:13.039 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:13.110 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=56 
+13:35:13.111 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:13.550 [MAC] UL 0001 PHR: ph=49 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=51 
+13:35:13.551 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:13.830 [MAC] DL 0001 LCID:3 len=774 
+13:35:13.871 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=106 
+13:35:13.990 [MAC] UL 0001 SBSR: lcg=2 b=1 LCID:3 len=130 
+13:35:13.999 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=10 PAD: len=11 
+13:35:13.999 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:14.151 [MAC] UL 0001 PHR: ph=48 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=53 
+13:35:14.151 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:14.231 [MAC] UL 0001 SBSR: lcg=2 b=23 LCID:3 len=130 
+13:35:14.238 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=326 PAD: len=23 
+13:35:14.238 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:14.471 [MAC] UL 0001 SBSR: lcg=2 b=6 LCID:3 len=130 
+13:35:14.479 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=24 PAD: len=4 
+13:35:14.479 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:15.831 [MAC] UL 0001 PHR: ph=50 SBSR: lcg=2 b=0 LCID:3 len=84 PAD: len=42 
+13:35:15.831 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:16.991 [MAC] DL 0001 LCID:3 len=1234 PAD: len=1 
+13:35:17.031 [MAC] UL 0001 PHR: ph=50 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:35:18.030 [MAC] UL 0001 PHR: ph=50 SBSR: lcg=2 b=0 LCID:3 len=128 
+13:35:18.031 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:18.111 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=44 
+13:35:18.111 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:18.151 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:35:18.170 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:18.591 [MAC] UL 0001 PHR: ph=51 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=35 
+13:35:18.591 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:18.991 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=69 PAD: len=31 
+13:35:18.991 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:19.231 [MAC] UL 0001 PHR: ph=51 SBSR: lcg=2 b=22 LCID:3 len=108 
+13:35:19.239 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=273 PAD: len=76 
+13:35:19.239 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:19.470 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=24 
+13:35:19.470 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:19.511 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=65 PAD: len=63 
+13:35:19.531 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:19.750 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=8 LCID:3 len=108 
+13:35:19.759 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=29 
+13:35:19.759 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:19.760 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=27 
+13:35:20.831 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=0 LCID:3 len=84 PAD: len=30 
+13:35:20.831 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:21.032 [MAC] DL 0001 LCID:3 len=1597 PAD: len=19 
+13:35:21.071 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=106 
+13:35:23.031 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=6 LCID:3 len=108 
+13:35:23.039 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=22 PAD: len=8 
+13:35:23.039 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:23.110 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=36 
+13:35:23.110 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:23.151 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=44 
+13:35:23.171 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:23.591 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=47 
+13:35:23.591 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:23.991 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=69 PAD: len=31 
+13:35:23.991 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:24.230 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=22 LCID:3 len=116 
+13:35:24.238 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=265 PAD: len=84 
+13:35:24.238 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:24.471 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=40 
+13:35:24.471 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:24.510 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=65 PAD: len=51 
+13:35:24.530 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:24.751 [MAC] UL 0001 PHR: ph=51 SBSR: lcg=2 b=4 LCID:3 len=120 
+13:35:24.758 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=17 PAD: len=8 
+13:35:24.758 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:25.871 [MAC] UL 0001 PHR: ph=50 SBSR: lcg=2 b=0 LCID:3 len=84 PAD: len=34 
+13:35:25.871 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:26.030 [MAC] DL 0001 LCID:3 len=1597 PAD: len=19 
+13:35:26.070 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=114 
+13:35:28.150 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=24 LCID:3 len=108 
+13:35:28.158 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=348 PAD: len=49 
+13:35:28.158 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:28.590 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=37 
+13:35:28.590 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:28.870 [MAC] UL 0001 PHR: ph=49 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=54 
+13:35:28.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:29.231 [MAC] UL 0001 SBSR: lcg=2 b=17 LCID:3 len=110 
+13:35:29.239 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=120 PAD: len=6 
+13:35:29.239 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:29.511 [MAC] UL 0001 PHR: ph=50 SBSR: lcg=2 b=0 LCID:3 len=65 PAD: len=61 
+13:35:29.511 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:29.671 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:35:29.671 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:29.750 [MAC] UL 0001 SBSR: lcg=2 b=19 LCID:3 len=118 
+13:35:29.759 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=153 PAD: len=16 
+13:35:29.759 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:31.152 [MAC] DL 0001 LCID:3 len=1691 
+13:35:31.152 [MAC] DL 0001 LCID:3 len=9 PAD: len=61 
+13:35:31.191 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:35:31.950 [MAC] UL 0001 PHR: ph=51 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=33 
+13:35:31.951 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:32.751 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=53 
+13:35:32.751 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:33.151 [MAC] UL 0001 SBSR: lcg=2 b=24 LCID:3 len=122 
+13:35:33.159 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=334 PAD: len=95 
+13:35:33.159 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:33.230 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=34 
+13:35:33.230 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:33.591 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=43 
+13:35:33.591 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:33.871 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=36 
+13:35:33.871 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:34.230 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=17 LCID:3 len=116 
+13:35:34.239 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=114 PAD: len=40 
+13:35:34.239 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:34.551 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=65 PAD: len=63 
+13:35:34.551 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:34.670 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=24 
+13:35:34.670 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:34.750 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=19 LCID:3 len=108 
+13:35:34.758 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=163 PAD: len=6 
+13:35:34.758 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:34.952 [MAC] DL 0001 LCID:3 len=1979 
+13:35:34.952 [MAC] DL 0001 LCID:3 len=24 PAD: len=46 
+13:35:34.991 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=106 
+13:35:36.951 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=41 
+13:35:36.951 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:37.791 [MAC] UL 0001 PHR: ph=50 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=45 
+13:35:37.791 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:38.150 [MAC] UL 0001 SBSR: lcg=2 b=25 LCID:3 len=110 
+13:35:38.158 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=422 PAD: len=23 
+13:35:38.158 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:38.231 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=26 
+13:35:38.231 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:38.870 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=6 LCID:3 len=108 
+13:35:38.879 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=22 PAD: len=12 
+13:35:38.879 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:39.231 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=32 
+13:35:39.231 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:39.670 [MAC] UL 0001 PHR: ph=48 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=34 
+13:35:39.671 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:39.751 [MAC] UL 0001 SBSR: lcg=2 b=18 LCID:3 len=134 
+13:35:39.774 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=138 PAD: len=15 
+13:35:39.774 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:39.950 [MAC] DL 0001 LCID:3 len=1799 PAD: len=33 
+13:35:39.990 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=130 
+13:35:41.950 [MAC] UL 0001 PHR: ph=44 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=33 
+13:35:41.950 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:42.790 [MAC] UL 0001 PHR: ph=42 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=53 
+13:35:42.790 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:43.151 [MAC] UL 0001 SBSR: lcg=2 b=25 LCID:3 len=130 
+13:35:43.158 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=402 PAD: len=43 
+13:35:43.159 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:43.271 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=54 
+13:35:43.271 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:43.910 [MAC] UL 0001 PHR: ph=43 SBSR: lcg=2 b=0 LCID:3 len=128 
+13:35:43.910 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:44.230 [MAC] UL 0001 PHR: ph=47 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=50 
+13:35:44.230 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:44.711 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:35:44.711 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:44.750 [MAC] UL 0001 PHR: ph=48 SBSR: lcg=2 b=16 LCID:3 len=108 
+13:35:44.758 [MAC] UL 0001 LCID:3 len=132 
+13:35:44.767 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=34 PAD: len=92 
+13:35:44.770 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:44.951 [MAC] DL 0001 LCID:3 len=1799 PAD: len=33 
+13:35:44.991 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=98 
+13:35:45.590 [MAC] UL 0001 PHR: ph=51 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=59 
+13:35:45.590 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:46.958 [MAC] UL 0001 PHR: ph=48 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=53 
+13:35:46.958 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:47.791 [MAC] UL 0001 PHR: ph=48 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=53 
+13:35:47.791 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:48.191 [MAC] UL 0001 SBSR: lcg=2 b=19 LCID:3 len=130 
+13:35:48.199 [MAC] UL 0001 PAD: len=0 LCID:3 len=175 
+13:35:48.199 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:48.206 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=128 
+13:35:48.270 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=54 
+13:35:48.270 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:48.591 [MAC] DL 0001 LCID:3 len=812 PAD: len=23 
+13:35:48.631 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:35:48.911 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=64 
+13:35:48.911 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:49.311 [MAC] UL 0001 PHR: ph=51 SBSR: lcg=2 b=0 LCID:3 len=69 PAD: len=57 
+13:35:49.311 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:49.751 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=60 
+13:35:49.751 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:50.591 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=59 
+13:35:50.591 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:50.871 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=55 
+13:35:50.871 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:51.110 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=0 LCID:3 len=65 PAD: len=61 
+13:35:51.110 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:51.591 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:35:51.591 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:51.910 [MAC] DL 0001 LCID:3 len=675 PAD: len=14 
+13:35:51.950 [MAC] UL 0001 PHR: ph=55 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=104 
+13:35:53.190 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=20 LCID:3 len=120 
+13:35:53.198 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=185 PAD: len=8 
+13:35:53.198 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:53.200 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=17 
+13:35:53.910 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=62 
+13:35:53.910 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:54.030 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=27 
+13:35:54.030 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:54.310 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=69 PAD: len=59 
+13:35:54.310 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:54.790 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=58 
+13:35:54.790 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:55.630 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=59 
+13:35:55.630 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:55.870 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=43 
+13:35:55.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:56.110 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=65 PAD: len=43 
+13:35:56.111 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:56.191 [MAC] DL 0001 LCID:3 len=1086 PAD: len=53 
+13:35:56.231 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:35:56.590 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:35:56.590 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:58.191 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=25 LCID:3 len=108 
+13:35:58.198 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=424 PAD: len=21 
+13:35:58.198 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:59.031 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=41 
+13:35:59.031 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:59.311 [MAC] UL 0001 SBSR: lcg=2 b=8 LCID:3 len=110 
+13:35:59.318 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=30 
+13:35:59.319 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:35:59.591 [MAC] DL 0001 LCID:3 len=1122 PAD: len=17 
+13:35:59.630 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=116 
+13:35:59.790 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=40 
+13:35:59.790 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:00.630 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=59 
+13:36:00.630 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:00.871 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=43 
+13:36:00.871 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:01.110 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=65 PAD: len=51 
+13:36:01.110 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:01.630 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=17 LCID:3 len=108 
+13:36:01.638 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=122 PAD: len=24 
+13:36:01.638 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:02.791 [MAC] DL 0001 LCID:3 len=692 
+13:36:02.792 [MAC] DL 0001 LCID:3 len=4 PAD: len=66 
+13:36:02.831 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=116 
+13:36:03.190 [MAC] UL 0001 SBSR: lcg=2 b=25 LCID:3 len=102 
+13:36:03.198 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=430 PAD: len=47 
+13:36:03.198 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:04.030 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=37 
+13:36:04.030 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:04.310 [MAC] UL 0001 SBSR: lcg=2 b=8 LCID:3 len=110 
+13:36:04.318 [MAC] UL 0001 PAD: len=0 LCID:3 len=30 
+13:36:04.318 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:04.319 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=27 
+13:36:04.791 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=58 
+13:36:04.791 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:05.631 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=47 
+13:36:05.631 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:05.870 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=47 
+13:36:05.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:06.110 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=65 PAD: len=55 
+13:36:06.110 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:06.191 [MAC] DL 0001 LCID:3 len=1406 PAD: len=21 
+13:36:06.230 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=112 
+13:36:06.631 [MAC] UL 0001 SBSR: lcg=2 b=16 LCID:3 len=130 
+13:36:06.638 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=100 PAD: len=6 
+13:36:06.638 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:08.191 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=25 LCID:3 len=120 
+13:36:08.198 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=412 PAD: len=65 
+13:36:08.198 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:09.031 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=41 
+13:36:09.031 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:09.311 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=69 PAD: len=39 
+13:36:09.311 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:09.630 [MAC] DL 0001 LCID:3 len=415 PAD: len=34 
+13:36:09.631 [MAC] DL 0001 LCID:3 len=819 PAD: len=16 
+13:36:09.670 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:36:10.630 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=55 
+13:36:10.630 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:11.510 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=65 PAD: len=53 
+13:36:11.510 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:11.630 [MAC] UL 0001 SBSR: lcg=2 b=22 LCID:3 len=114 
+13:36:11.638 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=258 PAD: len=27 
+13:36:11.638 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:13.190 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=25 LCID:3 len=116 
+13:36:13.199 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=416 PAD: len=61 
+13:36:13.199 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:13.631 [MAC] DL 0001 LCID:3 len=1425 PAD: len=2 
+13:36:13.670 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:36:14.310 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=0 LCID:3 len=69 PAD: len=57 
+13:36:14.310 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:15.630 [MAC] UL 0001 PHR: ph=52 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=55 
+13:36:15.631 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:16.471 [MAC] UL 0001 PHR: ph=53 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=62 
+13:36:16.471 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:16.510 [MAC] UL 0001 SBSR: lcg=2 b=1 LCID:3 len=130 
+13:36:16.518 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=6 PAD: len=29 
+13:36:16.530 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:16.630 [MAC] UL 0001 SBSR: lcg=2 b=22 LCID:3 len=130 
+13:36:16.638 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=242 PAD: len=107 
+13:36:16.638 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:17.190 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=58 
+13:36:17.191 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:17.311 [MAC] DL 0001 LCID:3 len=1062 
+13:36:17.312 [MAC] DL 0001 LCID:3 len=20 PAD: len=50 
+13:36:17.350 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:36:17.910 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=4 LCID:3 len=116 
+13:36:17.918 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=18 PAD: len=10 
+13:36:17.918 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:18.190 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=9 LCID:3 len=112 
+13:36:18.198 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=34 PAD: len=28 
+13:36:18.198 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:18.350 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=63 PAD: len=49 
+13:36:18.350 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:20.670 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=39 
+13:36:20.670 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:20.910 [MAC] DL 0001 LCID:3 len=103 PAD: len=43 
+13:36:20.912 [MAC] DL 0001 LCID:3 len=468 
+13:36:20.912 [MAC] DL 0001 LCID:3 len=7 PAD: len=63 
+13:36:20.950 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=98 
+13:36:21.470 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=42 
+13:36:21.470 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:21.510 [MAC] UL 0001 SBSR: lcg=2 b=2 LCID:3 len=122 
+13:36:21.518 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=14 PAD: len=7 
+13:36:21.530 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:21.630 [MAC] UL 0001 SBSR: lcg=2 b=20 LCID:3 len=106 
+13:36:21.639 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=181 PAD: len=12 
+13:36:21.639 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:21.639 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=36 
+13:36:21.870 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=42 
+13:36:21.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:22.190 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=38 
+13:36:22.190 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:22.511 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=32 
+13:36:22.511 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:22.910 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=8 LCID:3 len=104 
+13:36:22.918 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=30 
+13:36:22.918 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:23.190 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=32 
+13:36:23.190 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:23.230 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=36 
+13:36:23.250 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:23.351 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=63 PAD: len=37 
+13:36:23.351 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:24.471 [MAC] DL 0001 LCID:3 len=1430 
+13:36:24.472 [MAC] DL 0001 LCID:3 len=18 PAD: len=52 
+13:36:24.510 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=104 
+13:36:26.470 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=13 LCID:3 len=128 
+13:36:26.478 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=64 PAD: len=8 
+13:36:26.478 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:26.510 [MAC] UL 0001 SBSR: lcg=2 b=15 LCID:3 len=122 
+13:36:26.518 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=83 PAD: len=23 
+13:36:26.538 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:26.630 [MAC] UL 0001 SBSR: lcg=2 b=20 LCID:3 len=110 
+13:36:26.638 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=177 PAD: len=16 
+13:36:26.638 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:26.639 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=36 
+13:36:26.870 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=50 
+13:36:26.871 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:27.190 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=6 LCID:3 len=116 
+13:36:27.198 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=22 PAD: len=12 
+13:36:27.198 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:27.510 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=40 
+13:36:27.510 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:27.910 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=19 LCID:3 len=108 
+13:36:27.918 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=157 PAD: len=12 
+13:36:27.918 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:28.230 [MAC] UL 0001 SBSR: lcg=2 b=5 LCID:3 len=118 
+13:36:28.238 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=20 PAD: len=14 
+13:36:28.238 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:28.350 [MAC] UL 0001 SBSR: lcg=2 b=4 LCID:3 len=110 
+13:36:28.358 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=18 PAD: len=10 
+13:36:28.358 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:29.471 [MAC] DL 0001 LCID:3 len=2091 PAD: len=29 
+13:36:29.510 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=112 
+13:36:31.470 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=14 LCID:3 len=120 
+13:36:31.478 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=74 PAD: len=32 
+13:36:31.478 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:31.511 [MAC] UL 0001 SBSR: lcg=2 b=6 LCID:3 len=118 
+13:36:31.518 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=22 PAD: len=6 
+13:36:31.538 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:31.630 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=61 
+13:36:31.630 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:31.870 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=54 
+13:36:31.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:32.190 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=4 LCID:3 len=120 
+13:36:32.198 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=18 PAD: len=10 
+13:36:32.198 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:32.510 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:36:32.510 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:32.910 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=19 LCID:3 len=100 
+13:36:32.918 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=165 PAD: len=4 
+13:36:32.918 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:33.230 [MAC] UL 0001 SBSR: lcg=2 b=7 LCID:3 len=110 
+13:36:33.238 [MAC] UL 0001 PAD: len=0 PAD: len=0 LBSR: b=0 0 0 0 LCID:3 len=28 
+13:36:33.238 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:33.350 [MAC] UL 0001 SBSR: lcg=2 b=4 LCID:3 len=110 
+13:36:33.358 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=18 PAD: len=17 
+13:36:33.358 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:34.471 [MAC] DL 0001 LCID:3 len=1691 
+13:36:34.472 [MAC] DL 0001 LCID:3 len=8 PAD: len=62 
+13:36:34.510 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=112 
+13:36:36.510 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=24 LCID:3 len=120 
+13:36:36.518 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=348 PAD: len=49 
+13:36:36.518 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:36.670 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=41 
+13:36:36.670 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:36.870 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=62 
+13:36:36.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:37.190 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=14 LCID:3 len=128 
+13:36:37.198 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=79 PAD: len=1 
+13:36:37.198 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:36:37.550 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=24 
+13:36:37.550 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:36:37.910 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=23 LCID:3 len=128 
+13:36:37.918 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=293 PAD: len=56 
+13:36:37.918 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:36:38.230 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=60 
+13:36:38.230 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:36:38.350 [MAC] UL 0001 SBSR: lcg=2 b=15 LCID:3 len=122 
+13:36:38.358 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=83 PAD: len=23 
+13:36:38.358 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:36:39.511 [MAC] DL 0001 LCID:3 len=2195 
+13:36:39.512 [MAC] DL 0001 LCID:3 len=14 PAD: len=60 
+13:36:39.550 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=116 
+13:36:39.630 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=61 
+13:36:39.630 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:36:41.030 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=54 
+13:36:41.030 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:41.470 [MAC] UL 0001 PAD: len=0 PAD: len=0 SBSR: lcg=2 b=17 LCID:3 len=128 
+13:36:41.478 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=129 PAD: len=16 
+13:36:41.478 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:41.510 [MAC] UL 0001 SBSR: lcg=2 b=15 LCID:3 len=130 
+13:36:41.518 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=83 PAD: len=31 
+13:36:41.538 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:42.190 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=14 LCID:3 len=128 
+13:36:42.198 [MAC] UL 0001 LCID:3 len=78 
+13:36:42.199 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=3 PAD: len=31 
+13:36:42.199 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:42.631 [MAC] DL 0001 LCID:3 len=1142 
+13:36:42.632 [MAC] DL 0001 LCID:3 len=3 PAD: len=67 
+13:36:42.670 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=106 
+13:36:42.910 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=23 LCID:3 len=116 
+13:36:42.918 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=305 PAD: len=44 
+13:36:42.918 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:43.230 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=48 
+13:36:43.230 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:43.350 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=130 
+13:36:43.358 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=74 PAD: len=6 
+13:36:43.358 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:44.630 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=59 
+13:36:44.630 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:45.911 [MAC] DL 0001 LCID:3 len=1062 
+13:36:45.950 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:36:46.030 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=56 
+13:36:46.030 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:46.510 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=14 LCID:3 len=116 
+13:36:46.518 [MAC] UL 0001 LCID:3 len=86 
+13:36:46.526 [MAC] UL 0001 LCID:3 len=120 
+13:36:46.534 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=92 PAD: len=36 
+13:36:46.534 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:47.230 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=14 LCID:3 len=128 
+13:36:47.238 [MAC] UL 0001 PAD: len=0 PAD: len=0 LBSR: b=0 0 0 0 LCID:3 len=80 
+13:36:47.238 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:47.910 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=23 LCID:3 len=128 
+13:36:47.918 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=318 PAD: len=31 
+13:36:47.918 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:48.350 [MAC] UL 0001 SBSR: lcg=2 b=16 LCID:3 len=110 
+13:36:48.358 [MAC] UL 0001 PAD: len=0 SBSR: lcg=2 b=0 LCID:3 len=109 
+13:36:48.358 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:49.031 [MAC] DL 0001 LCID:3 len=1873 PAD: len=31 
+13:36:49.070 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=112 
+13:36:49.670 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=59 
+13:36:49.670 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:51.030 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=42 
+13:36:51.030 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:51.510 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=14 LCID:3 len=120 
+13:36:51.518 [MAC] UL 0001 LCID:3 len=84 
+13:36:51.526 [MAC] UL 0001 LCID:3 len=112 
+13:36:51.534 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=98 PAD: len=10 
+13:36:51.534 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:52.230 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=16 LCID:3 len=100 
+13:36:52.238 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=108 
+13:36:52.238 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:52.671 [MAC] DL 0001 LCID:3 len=1057 PAD: len=2 
+13:36:52.710 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=102 
+13:36:52.910 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=24 LCID:3 len=112 
+13:36:52.918 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=334 PAD: len=95 
+13:36:52.918 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:53.350 [MAC] UL 0001 SBSR: lcg=2 b=15 LCID:3 len=130 
+13:36:53.358 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=89 PAD: len=25 
+13:36:53.358 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:54.670 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=59 
+13:36:54.670 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:55.911 [MAC] DL 0001 LCID:3 len=998 
+13:36:55.912 [MAC] DL 0001 LCID:3 len=10 PAD: len=60 
+13:36:55.950 [MAC] UL 0001 PHR: ph=55 SBSR: lcg=2 b=0 LCID:3 len=2 LCID:3 len=64 PAD: len=58 
+13:36:55.950 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:56.030 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=72 PAD: len=36 
+13:36:56.030 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:56.510 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=19 LCID:3 len=108 
+13:36:56.518 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=154 PAD: len=15 
+13:36:56.518 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:56.550 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=130 
+13:36:56.558 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=82 
+13:36:56.578 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:57.230 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=16 LCID:3 len=108 
+13:36:57.238 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=102 PAD: len=24 
+13:36:57.238 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:57.550 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=60 PAD: len=40 
+13:36:57.550 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:57.950 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=24 LCID:3 len=100 
+13:36:57.958 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=342 PAD: len=55 
+13:36:57.958 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:58.390 [MAC] UL 0001 SBSR: lcg=2 b=16 LCID:3 len=130 
+13:36:58.398 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=96 PAD: len=18 
+13:36:58.398 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:36:58.951 [MAC] DL 0001 LCID:3 len=2123 
+13:36:58.952 [MAC] DL 0001 LCID:3 len=26 PAD: len=44 
+13:36:58.990 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=116 
+13:36:59.670 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=55 
+13:36:59.670 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:00.950 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=50 
+13:37:00.950 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:01.510 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=15 LCID:3 len=116 
+13:37:01.518 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=87 PAD: len=11 
+13:37:01.518 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:01.550 [MAC] UL 0001 SBSR: lcg=2 b=16 LCID:3 len=110 
+13:37:01.558 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=102 PAD: len=16 
+13:37:01.578 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:02.230 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=14 LCID:3 len=128 
+13:37:02.238 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=82 
+13:37:02.238 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:02.671 [MAC] DL 0001 LCID:3 len=1057 PAD: len=34 
+13:37:02.710 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=104 
+13:37:02.950 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=23 LCID:3 len=128 
+13:37:02.958 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=314 PAD: len=35 
+13:37:02.958 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:03.390 [MAC] UL 0001 SBSR: lcg=2 b=16 LCID:3 len=118 
+13:37:03.398 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=108 PAD: len=18 
+13:37:03.398 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:04.670 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=35 
+13:37:04.670 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:05.950 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=34 
+13:37:05.950 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:05.951 [MAC] DL 0001 LCID:3 len=998 
+13:37:05.952 [MAC] DL 0001 LCID:3 len=17 PAD: len=53 
+13:37:05.990 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:37:06.510 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=15 LCID:3 len=120 
+13:37:06.518 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=89 PAD: len=37 
+13:37:06.518 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:06.550 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=130 
+13:37:06.558 [MAC] UL 0001 PAD: len=0 LBSR: b=0 0 0 0 LCID:3 len=73 
+13:37:06.559 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=36 
+13:37:06.578 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:07.230 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=16 LCID:3 len=108 
+13:37:07.238 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=103 PAD: len=11 
+13:37:07.238 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:07.950 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=23 LCID:3 len=120 
+13:37:07.958 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=293 PAD: len=56 
+13:37:07.958 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:08.390 [MAC] UL 0001 SBSR: lcg=2 b=16 LCID:3 len=118 
+13:37:08.398 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=101 PAD: len=13 
+13:37:08.398 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:08.951 [MAC] DL 0001 PAD: len=0 LCID:3 len=1834 
+13:37:08.990 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=116 
+13:37:09.670 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=43 
+13:37:09.670 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:10.750 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=30 
+13:37:10.750 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:10.950 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=52 
+13:37:10.950 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:11.510 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=14 LCID:3 len=128 
+13:37:11.518 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=81 PAD: len=17 
+13:37:11.518 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:11.550 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=55 
+13:37:11.578 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:11.590 [MAC] UL 0001 SBSR: lcg=2 b=1 LCID:3 len=118 
+13:37:11.598 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=12 PAD: len=16 
+13:37:11.638 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:12.230 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=15 LCID:3 len=128 
+13:37:12.238 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=83 PAD: len=15 
+13:37:12.238 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:12.671 [MAC] DL 0001 LCID:3 len=1142 
+13:37:12.672 [MAC] DL 0001 LCID:3 len=19 PAD: len=51 
+13:37:12.710 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=114 
+13:37:12.950 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=23 LCID:3 len=116 
+13:37:12.958 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=297 PAD: len=52 
+13:37:12.958 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:13.390 [MAC] UL 0001 SBSR: lcg=2 b=16 LCID:3 len=122 
+13:37:13.398 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=97 PAD: len=29 
+13:37:13.398 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:14.270 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=44 
+13:37:14.270 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:14.670 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=37 
+13:37:14.670 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:15.750 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=50 
+13:37:15.750 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:15.951 [MAC] DL 0001 LCID:3 len=1182 PAD: len=5 
+13:37:15.990 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:37:16.550 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=15 LCID:3 len=128 
+13:37:16.558 [MAC] UL 0001 LCID:3 len=132 
+13:37:16.566 [MAC] UL 0001 LCID:3 len=132 
+13:37:16.574 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=26 PAD: len=102 
+13:37:16.574 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:17.230 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=15 LCID:3 len=108 
+13:37:17.238 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=94 PAD: len=32 
+13:37:17.238 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:17.950 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=22 LCID:3 len=108 
+13:37:17.958 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=268 PAD: len=9 
+13:37:17.958 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:18.390 [MAC] UL 0001 SBSR: lcg=2 b=16 LCID:3 len=102 
+13:37:18.398 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=105 PAD: len=1 
+13:37:18.398 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:19.270 [MAC] UL 0001 PHR: ph=53 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=52 
+13:37:19.270 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:19.551 [MAC] DL 0001 LCID:3 len=1792 PAD: len=40 
+13:37:19.590 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:37:20.750 [MAC] UL 0001 PHR: ph=55 SBSR: lcg=2 b=16 LCID:3 len=128 
+13:37:20.758 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=102 PAD: len=24 
+13:37:20.758 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:21.550 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=15 LCID:3 len=128 
+13:37:21.558 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=91 PAD: len=35 
+13:37:21.558 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:21.590 [MAC] UL 0001 PAD: len=0 PAD: len=0 SBSR: lcg=2 b=13 LCID:3 len=128 
+13:37:21.598 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=69 PAD: len=11 
+13:37:21.618 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:22.270 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=14 LCID:3 len=120 
+13:37:22.278 [MAC] UL 0001 LCID:3 len=78 
+13:37:22.279 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=6 PAD: len=28 
+13:37:22.279 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:37:22.950 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=22 LCID:3 len=128 
+13:37:22.958 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=247 PAD: len=102 
+13:37:22.958 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:23.390 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=130 
+13:37:23.398 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=77 PAD: len=3 
+13:37:23.398 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:23.751 [MAC] DL 0001 LCID:3 len=1979 
+13:37:23.752 [MAC] DL 0001 LCID:3 len=24 PAD: len=46 
+13:37:23.790 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=116 
+13:37:24.270 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=32 
+13:37:24.270 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:25.750 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=16 LCID:3 len=128 
+13:37:25.758 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=102 PAD: len=24 
+13:37:25.758 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:26.550 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=16 LCID:3 len=116 
+13:37:26.558 [MAC] UL 0001 PAD: len=0 LBSR: b=0 0 0 0 LCID:3 len=107 
+13:37:26.558 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:26.590 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=122 
+13:37:26.598 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=82 PAD: len=16 
+13:37:26.618 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:27.230 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=0 LCID:3 len=70 PAD: len=56 
+13:37:27.230 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:27.270 [MAC] UL 0001 SBSR: lcg=2 b=1 LCID:3 len=110 
+13:37:27.271 [MAC] DL 0001 LCID:3 len=1098 PAD: len=41 
+13:37:27.278 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=12 PAD: len=22 
+13:37:27.290 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:27.310 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=118 
+13:37:27.990 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=21 LCID:3 len=128 
+13:37:27.998 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=240 PAD: len=21 
+13:37:27.998 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:28.390 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=130 
+13:37:28.398 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=70 PAD: len=2 
+13:37:28.398 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:28.399 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=36 
+13:37:29.270 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=0 LCID:3 len=74 PAD: len=52 
+13:37:29.270 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:30.271 [MAC] DL 0001 LCID:3 len=1093 PAD: len=46 
+13:37:30.310 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:37:30.790 [MAC] UL 0001 SBSR: lcg=2 b=8 LCID:3 len=122 
+13:37:30.806 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=32 PAD: len=22 
+13:37:30.806 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:30.990 [MAC] UL 0001 PHR: ph=55 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=38 
+13:37:30.990 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:31.550 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=17 LCID:3 len=104 
+13:37:31.558 [MAC] UL 0001 PAD: len=0 LBSR: b=0 0 0 0 LCID:3 len=119 
+13:37:31.558 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:31.559 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=23 
+13:37:31.590 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=130 
+13:37:31.598 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=74 PAD: len=6 
+13:37:31.618 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:32.270 [MAC] UL 0001 PHR: ph=53 SBSR: lcg=2 b=13 LCID:3 len=128 
+13:37:32.278 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=64 PAD: len=16 
+13:37:32.278 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:32.990 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=21 LCID:3 len=128 
+13:37:32.998 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=240 PAD: len=21 
+13:37:32.998 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:33.390 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=130 
+13:37:33.398 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=70 PAD: len=10 
+13:37:33.398 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:33.791 [MAC] DL 0001 LCID:3 len=1979 
+13:37:33.792 [MAC] DL 0001 LCID:3 len=10 PAD: len=60 
+13:37:33.830 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:37:35.790 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=9 LCID:3 len=116 
+13:37:35.798 [MAC] UL 0001 PAD: len=0 SBSR: lcg=2 b=0 LCID:3 len=38 
+13:37:35.798 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:35.990 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:37:35.990 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:36.550 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=17 LCID:3 len=108 
+13:37:36.558 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=121 PAD: len=25 
+13:37:36.558 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:36.590 [MAC] UL 0001 SBSR: lcg=2 b=15 LCID:3 len=110 
+13:37:36.598 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=94 PAD: len=20 
+13:37:36.618 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:37.270 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=13 LCID:3 len=128 
+13:37:37.278 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=63 PAD: len=17 
+13:37:37.278 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:37.990 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=22 LCID:3 len=116 
+13:37:37.998 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=263 PAD: len=86 
+13:37:37.998 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:38.430 [MAC] UL 0001 PHR: ph=55 SBSR: lcg=2 b=14 LCID:3 len=116 
+13:37:38.438 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=82 
+13:37:38.438 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:38.791 [MAC] DL 0001 LCID:3 len=1979 
+13:37:38.792 [MAC] DL 0001 LCID:3 len=23 PAD: len=47 
+13:37:38.830 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:37:40.790 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=25 LCID:3 len=128 
+13:37:40.798 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=404 PAD: len=41 
+13:37:40.798 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:40.870 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=60 
+13:37:40.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:41.030 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:37:41.030 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:41.550 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=16 LCID:3 len=128 
+13:37:41.558 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=101 PAD: len=25 
+13:37:41.558 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:41.630 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=122 
+13:37:41.638 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=82 
+13:37:41.638 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:41.710 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=56 
+13:37:41.710 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:42.270 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=15 LCID:3 len=100 
+13:37:42.278 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=92 PAD: len=34 
+13:37:42.278 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:42.990 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=22 LCID:3 len=108 
+13:37:42.998 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=271 PAD: len=30 
+13:37:42.998 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:43.430 [MAC] UL 0001 PHR: ph=63 SBSR: lcg=2 b=16 LCID:3 len=100 
+13:37:43.438 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=98 PAD: len=20 
+13:37:43.438 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:43.791 [MAC] DL 0001 LCID:3 len=415 PAD: len=50 
+13:37:43.792 [MAC] DL 0001 LCID:3 len=2291 
+13:37:43.830 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=98 
+13:37:45.790 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=25 LCID:3 len=100 
+13:37:45.798 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=432 PAD: len=45 
+13:37:45.798 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:45.910 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=60 
+13:37:45.910 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:46.030 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:37:46.030 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:46.590 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=22 LCID:3 len=116 
+13:37:46.598 [MAC] UL 0001 LCID:3 len=356 
+13:37:46.606 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=31 PAD: len=95 
+13:37:46.606 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:46.710 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=64 
+13:37:46.710 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:47.270 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=14 LCID:3 len=128 
+13:37:47.278 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=74 PAD: len=6 
+13:37:47.278 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:47.830 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=47 
+13:37:47.830 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:47.990 [MAC] UL 0001 SBSR: lcg=2 b=21 LCID:3 len=110 
+13:37:47.998 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=214 PAD: len=19 
+13:37:47.998 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:48.430 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=14 LCID:3 len=120 
+13:37:48.438 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=79 PAD: len=27 
+13:37:48.438 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:48.791 [MAC] DL 0001 LCID:3 len=2734 PAD: len=31 
+13:37:48.792 [MAC] DL 0001 LCID:3 len=93 PAD: len=53 
+13:37:48.830 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=106 
+13:37:49.470 [MAC] UL 0001 PHR: ph=60 LBSR: b=0 0 0 0 PAD: len=106 
+13:37:50.790 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=26 LCID:3 len=116 
+13:37:50.798 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=491 PAD: len=74 
+13:37:50.798 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:50.910 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=52 
+13:37:50.910 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:51.350 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=38 
+13:37:51.350 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:51.590 [MAC] UL 0001 SBSR: lcg=2 b=20 LCID:3 len=110 
+13:37:51.598 [MAC] UL 0001 LCID:3 len=224 
+13:37:51.606 [MAC] UL 0001 LCID:3 len=132 
+13:37:51.614 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=39 PAD: len=77 
+13:37:51.614 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:51.710 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=36 
+13:37:51.710 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:52.270 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=6 LCID:3 len=108 
+13:37:52.278 [MAC] UL 0001 LCID:3 len=34 
+13:37:52.286 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=62 PAD: len=56 
+13:37:52.286 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:52.830 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=51 
+13:37:52.830 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:52.990 [MAC] UL 0001 SBSR: lcg=2 b=18 LCID:3 len=122 
+13:37:52.998 [MAC] UL 0001 LCID:3 len=160 
+13:37:53.006 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=43 PAD: len=71 
+13:37:53.006 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:53.430 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=15 LCID:3 len=116 
+13:37:53.438 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=83 PAD: len=15 
+13:37:53.438 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:53.792 [MAC] DL 0001 LCID:3 len=2930 PAD: len=27 
+13:37:53.830 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:37:55.790 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=26 LCID:3 len=120 
+13:37:55.798 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=487 PAD: len=126 
+13:37:55.798 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:55.909 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=68 PAD: len=60 
+13:37:55.910 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:56.350 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=42 
+13:37:56.350 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:56.590 [MAC] UL 0001 SBSR: lcg=2 b=22 LCID:3 len=122 
+13:37:56.598 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=244 PAD: len=105 
+13:37:56.598 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:56.630 [MAC] UL 0001 PAD: len=0 PAD: len=0 SBSR: lcg=2 b=13 LCID:3 len=128 
+13:37:56.638 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=66 PAD: len=14 
+13:37:56.658 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:56.710 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=64 
+13:37:56.717 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:57.309 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=16 LCID:3 len=108 
+13:37:57.318 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=104 PAD: len=10 
+13:37:57.318 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:57.869 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=39 
+13:37:57.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:58.030 [MAC] UL 0001 SBSR: lcg=2 b=19 LCID:3 len=102 
+13:37:58.038 [MAC] UL 0001 PAD: len=0 LBSR: b=0 0 0 0 LCID:3 len=171 
+13:37:58.038 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:58.430 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=16 LCID:3 len=100 
+13:37:58.438 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=107 PAD: len=19 
+13:37:58.438 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:37:58.790 [MAC] DL 0001 LCID:3 len=1979 
+13:37:58.792 [MAC] DL 0001 LCID:3 len=978 PAD: len=17 
+13:37:58.830 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=98 
+13:38:00.790 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=9 LCID:3 len=116 
+13:38:00.797 [MAC] UL 0001 PAD: len=0 SBSR: lcg=2 b=0 LCID:3 len=38 
+13:38:00.798 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:00.829 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=33 
+13:38:00.858 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:00.910 [MAC] UL 0001 SBSR: lcg=2 b=9 LCID:3 len=102 
+13:38:00.918 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=36 PAD: len=26 
+13:38:00.918 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:01.270 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:38:01.270 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:01.350 [MAC] UL 0001 PHR: ph=62 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=30 
+13:38:01.350 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:01.590 [MAC] UL 0001 SBSR: lcg=2 b=22 LCID:3 len=118 
+13:38:01.598 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=248 PAD: len=69 
+13:38:01.598 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:01.630 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=122 
+13:38:01.638 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=74 PAD: len=24 
+13:38:01.658 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:02.310 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=15 LCID:3 len=128 
+13:38:02.318 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=84 PAD: len=30 
+13:38:02.318 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:02.870 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=59 
+13:38:02.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:03.030 [MAC] UL 0001 PAD: len=0 PAD: len=0 SBSR: lcg=2 b=18 LCID:3 len=128 
+13:38:03.037 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=144 PAD: len=9 
+13:38:03.038 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:03.430 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=14 LCID:3 len=128 
+13:38:03.438 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=79 PAD: len=1 
+13:38:03.438 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:03.791 [MAC] DL 0001 LCID:3 len=2536 PAD: len=37 
+13:38:03.830 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:38:05.790 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=12 LCID:3 len=100 
+13:38:05.798 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=54 PAD: len=14 
+13:38:05.798 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:05.830 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=61 
+13:38:05.857 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:05.910 [MAC] UL 0001 SBSR: lcg=2 b=1 LCID:3 len=130 
+13:38:05.918 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=8 PAD: len=26 
+13:38:05.918 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:06.309 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=50 
+13:38:06.309 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:06.350 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=44 
+13:38:06.370 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:06.589 [MAC] UL 0001 SBSR: lcg=2 b=19 LCID:3 len=122 
+13:38:06.598 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=153 PAD: len=40 
+13:38:06.598 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:06.630 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=118 
+13:38:06.638 [MAC] UL 0001 LCID:3 len=78 
+13:38:06.638 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=4 PAD: len=30 
+13:38:06.658 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:07.310 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=15 LCID:3 len=120 
+13:38:07.318 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=92 PAD: len=14 
+13:38:07.318 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:07.870 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=55 
+13:38:07.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:08.030 [MAC] UL 0001 SBSR: lcg=2 b=21 LCID:3 len=122 
+13:38:08.038 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=231 PAD: len=2 
+13:38:08.038 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:08.429 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=15 LCID:3 len=120 
+13:38:08.438 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=94 PAD: len=12 
+13:38:08.438 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:08.790 [MAC] DL 0001 LCID:3 len=907 PAD: len=24 
+13:38:08.792 [MAC] DL 0001 LCID:3 len=1619 
+13:38:08.792 [MAC] DL 0001 LCID:3 len=14 PAD: len=56 
+13:38:08.829 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=118 
+13:38:10.830 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=17 LCID:3 len=100 
+13:38:10.838 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=112 PAD: len=34 
+13:38:10.838 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:10.910 [MAC] UL 0001 SBSR: lcg=2 b=3 LCID:3 len=122 
+13:38:10.917 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=16 PAD: len=9 
+13:38:10.917 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:11.310 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=32 
+13:38:11.310 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:11.590 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=18 LCID:3 len=128 
+13:38:11.598 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=147 PAD: len=22 
+13:38:11.598 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:11.630 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=122 
+13:38:11.638 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 
+13:38:11.639 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=36 
+13:38:11.658 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:12.310 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=15 LCID:3 len=128 
+13:38:12.317 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=84 PAD: len=30 
+13:38:12.317 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:12.909 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=47 
+13:38:12.910 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:13.030 [MAC] UL 0001 SBSR: lcg=2 b=21 LCID:3 len=118 
+13:38:13.037 [MAC] UL 0001 PAD: len=0 LBSR: b=0 0 0 0 LCID:3 len=235 
+13:38:13.037 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:13.430 [MAC] UL 0001 PHR: ph=62 SBSR: lcg=2 b=16 LCID:3 len=116 
+13:38:13.438 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=98 PAD: len=36 
+13:38:13.438 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:13.830 [MAC] DL 0001 LCID:3 len=2425 PAD: len=52 
+13:38:13.870 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=118 
+13:38:15.830 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=15 LCID:3 len=128 
+13:38:15.837 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=84 PAD: len=42 
+13:38:15.838 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:15.910 [MAC] UL 0001 SBSR: lcg=2 b=1 LCID:3 len=130 
+13:38:15.918 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=8 PAD: len=27 
+13:38:15.918 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:16.310 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=52 
+13:38:16.310 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:16.630 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=22 LCID:3 len=116 
+13:38:16.638 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=265 PAD: len=84 
+13:38:16.638 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:17.350 [MAC] UL 0001 PHR: ph=62 SBSR: lcg=2 b=15 LCID:3 len=128 
+13:38:17.358 [MAC] UL 0001 PAD: len=0 LBSR: b=0 0 0 0 LCID:3 len=87 
+13:38:17.358 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:17.910 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=55 
+13:38:17.910 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:18.030 [MAC] UL 0001 SBSR: lcg=2 b=20 LCID:3 len=102 
+13:38:18.038 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=187 PAD: len=30 
+13:38:18.038 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:18.470 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=15 LCID:3 len=128 
+13:38:18.478 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=86 PAD: len=40 
+13:38:18.478 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:18.831 [MAC] DL 0001 LCID:3 len=2195 
+13:38:18.833 [MAC] DL 0001 LCID:3 len=27 PAD: len=43 
+13:38:18.870 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:38:20.870 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=59 
+13:38:20.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:21.629 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=20 LCID:3 len=120 
+13:38:21.638 [MAC] UL 0001 LCID:3 len=200 
+13:38:21.639 [MAC] UL 0001 LCID:3 len=40 
+13:38:21.646 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=24 PAD: len=74 
+13:38:21.647 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:22.349 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=15 LCID:3 len=120 
+13:38:22.358 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=95 PAD: len=11 
+13:38:22.358 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:22.909 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=71 PAD: len=27 
+13:38:22.909 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:23.029 [MAC] UL 0001 SBSR: lcg=2 b=1 LCID:3 len=130 
+13:38:23.038 [MAC] UL 0001 LCID:3 len=41 
+13:38:23.046 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=121 PAD: len=5 
+13:38:23.046 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:23.469 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=16 LCID:3 len=108 
+13:38:23.478 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=106 PAD: len=20 
+13:38:23.478 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:23.872 [MAC] DL 0001 LCID:3 len=1728 PAD: len=32 
+13:38:23.910 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:38:24.070 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=60 
+13:38:24.070 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:25.869 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=0 LCID:3 len=67 PAD: len=51 
+13:38:25.869 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:26.630 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=13 LCID:3 len=128 
+13:38:26.638 [MAC] UL 0001 LCID:3 len=78 
+13:38:26.645 [MAC] UL 0001 LCID:3 len=120 
+13:38:26.654 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=59 PAD: len=49 
+13:38:26.654 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:27.070 [MAC] DL 0001 LCID:3 len=735 PAD: len=36 
+13:38:27.110 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:38:27.350 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=15 LCID:3 len=128 
+13:38:27.358 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=90 PAD: len=36 
+13:38:27.358 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:28.070 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=4 LCID:3 len=128 
+13:38:28.077 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=18 PAD: len=17 
+13:38:28.077 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:28.470 [MAC] UL 0001 SBSR: lcg=2 b=1 LCID:3 len=130 
+13:38:28.477 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=11 PAD: len=23 
+13:38:28.477 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:29.069 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=52 
+13:38:29.070 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:30.351 [MAC] DL 0001 LCID:3 len=774 
+13:38:30.353 [MAC] DL 0001 LCID:3 len=14 PAD: len=56 
+13:38:30.390 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:38:31.629 [MAC] UL 0001 PHR: ph=62 SBSR: lcg=2 b=15 LCID:3 len=100 
+13:38:31.638 [MAC] UL 0001 LCID:3 len=112 
+13:38:31.646 [MAC] UL 0001 LCID:3 len=104 
+13:38:31.653 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=70 PAD: len=30 
+13:38:31.654 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:32.350 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=17 LCID:3 len=104 
+13:38:32.358 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=114 PAD: len=32 
+13:38:32.358 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:33.070 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=7 LCID:3 len=120 
+13:38:33.078 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=26 PAD: len=8 
+13:38:33.078 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:33.470 [MAC] UL 0001 SBSR: lcg=2 b=4 LCID:3 len=122 
+13:38:33.478 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=19 PAD: len=9 
+13:38:33.478 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:34.070 [MAC] UL 0001 PHR: ph=62 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=32 
+13:38:34.070 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:34.630 [MAC] DL 0001 LCID:3 len=1332 PAD: len=47 
+13:38:34.670 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=116 
+13:38:36.630 [MAC] UL 0001 PHR: ph=61 SBSR: lcg=2 b=6 LCID:3 len=108 
+13:38:36.637 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=24 PAD: len=1 
+13:38:36.637 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:36.669 [MAC] UL 0001 SBSR: lcg=2 b=3 LCID:3 len=110 
+13:38:36.678 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=16 PAD: len=12 
+13:38:36.698 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:37.349 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=5 LCID:3 len=128 
+13:38:37.357 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=20 PAD: len=14 
+13:38:37.357 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:38.470 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=60 
+13:38:38.470 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:39.069 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=52 
+13:38:39.069 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:39.631 [MAC] DL 0001 LCID:3 len=753 PAD: len=18 
+13:38:39.670 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=112 
+13:38:41.630 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=15 LCID:3 len=116 
+13:38:41.638 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=92 PAD: len=34 
+13:38:41.638 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:41.670 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=124 PAD: len=4 
+13:38:41.697 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:42.390 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=5 LCID:3 len=128 
+13:38:42.397 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=20 PAD: len=15 
+13:38:42.397 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:43.470 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=60 
+13:38:43.470 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:44.630 [MAC] DL 0001 LCID:3 len=669 PAD: len=20 
+13:38:44.632 [MAC] DL 0001 LCID:3 len=94 PAD: len=52 
+13:38:44.669 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:38:46.669 [MAC] UL 0001 PHR: ph=55 SBSR: lcg=2 b=14 LCID:3 len=132 
+13:38:46.678 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=73 PAD: len=5 
+13:38:46.678 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:47.389 [MAC] UL 0001 PHR: ph=55 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=29 
+13:38:47.389 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:48.469 [MAC] UL 0001 PHR: ph=54 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=60 
+13:38:48.469 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:49.670 [MAC] DL 0001 LCID:3 len=480 PAD: len=49 
+13:38:49.710 [MAC] UL 0001 PHR: ph=53 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:38:51.669 [MAC] UL 0001 PHR: ph=53 SBSR: lcg=2 b=14 LCID:3 len=128 
+13:38:51.677 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=77 PAD: len=3 
+13:38:51.677 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:52.389 [MAC] UL 0001 PHR: ph=55 SBSR: lcg=2 b=0 LCID:3 len=73 PAD: len=53 
+13:38:52.390 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:53.509 [MAC] UL 0001 PHR: ph=56 SBSR: lcg=2 b=0 LCID:3 len=66 PAD: len=60 
+13:38:53.510 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:53.512 [MAC] DL 0001 LCID:3 len=94 PAD: len=52 
+13:38:53.549 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:38:56.669 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=50 
+13:38:56.669 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:56.671 [MAC] DL 0001 LCID:3 len=104 PAD: len=42 
+13:38:56.710 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:39:02.789 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=0 LCID:3 len=76 PAD: len=50 
+13:39:02.790 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:02.829 [MAC] DL 0001 LCID:3 len=116 PAD: len=30 
+13:39:02.870 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 LCID:3 len=64 PAD: len=60 
+13:39:02.870 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:02.897 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:39:02.949 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 LCID:3 len=56 PAD: len=68 
+13:39:02.949 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:02.989 [MAC] UL 0001 SBSR: lcg=2 b=19 LCID:3 len=110 
+13:39:02.998 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=164 PAD: len=5 
+13:39:03.009 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:03.027 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:03.030 [MAC] DL 0001 LCID:3 len=4586 
+13:39:03.031 [MAC] DL 0001 LCID:3 len=10 PAD: len=60 
+13:39:03.069 [MAC] UL 0001 SBSR: lcg=2 b=16 LCID:3 len=2 LCID:3 len=118 
+13:39:03.077 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=107 PAD: len=19 
+13:39:03.077 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:03.229 [MAC] UL 0001 SBSR: lcg=2 b=14 LCID:3 len=118 
+13:39:03.237 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=74 PAD: len=6 
+13:39:03.237 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:03.268 [MAC] DL 0001 LCID:3 len=115 PAD: len=31 
+13:39:03.310 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=27 LCID:3 len=2 LCID:3 len=104 
+13:39:03.318 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=527 PAD: len=134 
+13:39:03.318 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:03.387 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:03.429 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:39:03.470 [MAC] DL 0001 LCID:3 len=1350 PAD: len=29 
+13:39:03.509 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 LCID:3 len=56 PAD: len=68 
+13:39:03.509 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:03.669 [MAC] UL 0001 SBSR: lcg=2 b=26 LCID:3 len=130 
+13:39:03.677 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=493 PAD: len=120 
+13:39:03.677 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:03.708 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:03.750 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:39:03.799 [MAC] DL 0001 LCID:3 len=1354 PAD: len=25 
+13:39:03.829 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=0 LCID:3 len=2 LCID:3 len=56 PAD: len=66 
+13:39:03.829 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:58.179 [MAC] UL 0001 PHR: ph=57 SBSR: lcg=2 b=20 LCID:3 len=128 
+13:38:58.187 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=191 PAD: len=26 
+13:38:58.187 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:58.207 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:38:58.208 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:38:58.213 [MAC] DL 0001 LCID:3 len=128 PAD: len=17 
+13:38:58.215 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:38:58.259 [MAC] UL 0001 SBSR: lcg=2 b=31 LCID:3 len=2 LCID:3 len=106 
+13:38:58.267 [MAC] UL 0001 LCID:3 len=1142 
+13:38:58.275 [MAC] UL 0001 LCID:3 len=132 
+13:38:58.283 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=32 PAD: len=96 
+13:38:58.283 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:58.297 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:38:58.298 [MAC] DL 0001 LCID:3 len=2948 PAD: len=110 
+13:38:58.299 [MAC] DL 0001 LCID:3 len=1334 
+13:38:58.300 [MAC] DL 0001 LCID:3 len=5652 PAD: len=13 
+13:38:58.302 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:38:58.303 [MAC] DL 0001 LCID:3 len=5454 PAD: len=19 
+13:38:58.309 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:38:58.310 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:38:58.311 [MAC] DL 0001 LCID:3 len=2699 PAD: len=66 
+13:38:58.339 [MAC] UL 0001 SBSR: lcg=2 b=29 LCID:3 len=2 LCID:3 len=106 
+13:38:58.347 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=730 PAD: len=165 
+13:38:58.347 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:58.499 [MAC] UL 0001 SBSR: lcg=2 b=22 LCID:3 len=102 
+13:38:58.507 [MAC] UL 0001 LCID:3 len=324 
+13:38:58.515 [MAC] UL 0001 LCID:3 len=132 
+13:38:58.523 [MAC] UL 0001 SBSR: lcg=2 b=20 LCID:3 len=130 
+13:38:58.531 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=189 PAD: len=28 
+13:38:58.531 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:58.536 [MAC] DL 0001 LCID:3 len=198 PAD: len=31 
+13:38:58.543 [MAC] DL 0001 LCID:3 len=99 PAD: len=47 
+13:38:58.558 [MAC] DL 0001 LCID:3 len=198 PAD: len=31 
+13:38:58.579 [MAC] UL 0001 SBSR: lcg=2 b=20 LCID:3 len=2 LCID:3 len=98 
+13:38:58.587 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=183 PAD: len=34 
+13:38:58.590 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:58.659 [MAC] UL 0001 SBSR: lcg=2 b=42 LCID:3 len=102 
+13:38:58.667 [MAC] UL 0001 LCID:3 len=3661 
+13:38:58.668 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=2175 PAD: len=682 
+13:38:58.668 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:58.728 [MAC] DL 0001 LCID:3 len=834 PAD: len=1 
+13:38:58.729 [MAC] DL 0001 LCID:3 len=173 PAD: len=56 
+13:38:58.730 [MAC] DL 0001 LCID:3 len=468 
+13:38:58.731 [MAC] DL 0001 LCID:3 len=428 PAD: len=37 
+13:38:58.736 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:38:58.737 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:38:58.739 [MAC] DL 0001 LCID:3 len=897 PAD: len=34 
+13:38:58.741 [MAC] DL 0001 LCID:3 len=187 PAD: len=42 
+13:38:58.742 [MAC] DL 0001 LCID:3 len=848 PAD: len=83 
+13:38:58.743 [MAC] DL 0001 LCID:3 len=190 PAD: len=39 
+13:38:58.745 [MAC] DL 0001 LCID:3 len=817 PAD: len=18 
+13:38:58.754 [MAC] DL 0001 LCID:3 len=134 PAD: len=19 
+13:38:58.779 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=27 LCID:3 len=2 LCID:3 len=124 
+13:38:58.787 [MAC] UL 0001 LCID:3 len=668 
+13:38:58.795 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=45 PAD: len=69 
+13:38:58.795 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:58.979 [MAC] UL 0001 SBSR: lcg=2 b=15 LCID:3 len=110 
+13:38:58.987 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=92 PAD: len=34 
+13:38:58.987 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:59.019 [MAC] UL 0001 SBSR: lcg=2 b=29 LCID:3 len=130 
+13:38:59.025 [MAC] DL 0001 LCID:3 len=617 PAD: len=0 
+13:38:59.027 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=747 PAD: len=212 
+13:38:59.030 [MAC] DL 0001 LCID:3 len=111 PAD: len=43 
+13:38:59.047 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:59.059 [MAC] UL 0001 SBSR: lcg=2 b=21 LCID:3 len=2 LCID:3 len=98 
+13:38:59.067 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=223 PAD: len=10 
+13:38:59.082 [MAC] DL 0001 LCID:3 len=64 PAD: len=10 
+13:38:59.095 [MAC] DL 0001 LCID:3 len=64 PAD: len=10 
+13:38:59.096 [MAC] DL 0001 LCID:3 len=56 PAD: len=18 
+13:38:59.103 [MAC] DL 0001 LCID:3 len=64 PAD: len=10 
+13:38:59.107 [MAC] DL 0001 LCID:3 len=2 LCID:3 len=1072 PAD: len=15 
+13:38:59.108 [MAC] DL 0001 LCID:3 len=127 PAD: len=27 
+13:38:59.139 [MAC] UL 0001 SBSR: lcg=2 b=34 LCID:3 len=2 LCID:3 len=106 
+13:38:59.147 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=1603 PAD: len=225 
+13:38:59.164 [MAC] DL 0001 LCID:3 len=56 PAD: len=18 
+13:38:59.167 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:59.176 [MAC] DL 0001 LCID:3 len=1504 PAD: len=64 
+13:38:59.177 [MAC] DL 0001 LCID:3 len=7707 
+13:38:59.177 [MAC] DL 0001 LCID:3 len=1965 PAD: len=11 
+13:38:59.185 [MAC] DL 0001 LCID:3 len=112 PAD: len=42 
+13:38:59.187 [MAC] DL 0001 LCID:3 len=3783 PAD: len=35 
+13:38:59.188 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:38:59.189 [MAC] DL 0001 LCID:3 len=5540 PAD: len=125 
+13:38:59.190 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:38:59.191 [MAC] DL 0001 LCID:3 len=1647 PAD: len=41 
+13:38:59.219 [MAC] UL 0001 SBSR: lcg=2 b=32 LCID:3 len=2 LCID:3 len=106 
+13:38:59.227 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=1229 PAD: len=242 
+13:38:59.227 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:59.339 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=13 LCID:3 len=128 
+13:38:59.347 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=64 PAD: len=16 
+13:38:59.347 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:59.379 [MAC] UL 0001 SBSR: lcg=2 b=22 LCID:3 len=110 
+13:38:59.387 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=272 PAD: len=77 
+13:38:59.388 [MAC] DL 0001 LCID:3 len=115 PAD: len=39 
+13:38:59.407 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:59.419 [MAC] UL 0001 SBSR: lcg=2 b=32 LCID:3 len=2 LCID:3 len=126 
+13:38:59.425 [MAC] DL 0001 LCID:3 len=115 PAD: len=39 
+13:38:59.427 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=1220 PAD: len=107 
+13:38:59.428 [MAC] DL 0001 LCID:3 len=115 PAD: len=39 
+13:38:59.454 [MAC] DL 0001 LCID:3 len=115 PAD: len=39 
+13:38:59.459 [MAC] UL 0001 SBSR: lcg=2 b=34 LCID:3 len=110 
+13:38:59.464 [MAC] DL 0001 LCID:3 len=115 PAD: len=39 
+13:38:59.467 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=1717 PAD: len=111 
+13:38:59.467 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:59.499 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 LCID:3 len=56 PAD: len=68 
+13:38:59.504 [MAC] DL 0001 LCID:3 len=56 PAD: len=18 
+13:38:59.527 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:38:59.543 [MAC] DL 0001 LCID:3 len=56 PAD: len=18 
+13:38:59.546 [MAC] DL 0001 LCID:3 len=56 PAD: len=18 
+13:38:59.571 [MAC] DL 0001 LCID:3 len=813 PAD: len=22 
+13:38:59.572 [MAC] DL 0001 LCID:3 len=893 PAD: len=6 
+13:38:59.579 [MAC] UL 0001 SBSR: lcg=2 b=28 LCID:3 len=2 LCID:3 len=126 
+13:38:59.587 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=665 PAD: len=44 
+13:38:59.587 [MAC] DL 0001 LCID:3 len=2 LCID:3 len=4883 PAD: len=13 
+13:38:59.619 [MAC] UL 0001 LCID:3 len=112 
+13:38:59.627 [MAC] UL 0001 SBSR: lcg=2 b=24 LCID:3 len=110 
+13:38:59.635 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=369 PAD: len=28 
+13:38:59.647 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:59.659 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 LCID:3 len=61 PAD: len=63 
+13:38:59.664 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:38:59.690 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:38:59.699 [MAC] DL 0001 LCID:3 len=189 PAD: len=32 
+13:38:59.700 [MAC] DL 0001 LCID:3 len=493 PAD: len=36 
+13:38:59.705 [MAC] DL 0001 LCID:3 len=845 PAD: len=54 
+13:38:59.707 [MAC] DL 0001 LCID:3 len=2 LCID:3 len=829 PAD: len=2 
+13:38:59.739 [MAC] UL 0001 SBSR: lcg=2 b=16 LCID:3 len=2 LCID:3 len=126 
+13:38:59.747 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=107 PAD: len=7 
+13:38:59.767 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:59.780 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:38:59.819 [MAC] UL 0001 SBSR: lcg=2 b=19 LCID:3 len=2 LCID:3 len=126 
+13:38:59.827 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=172 
+13:38:59.827 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:59.859 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=22 LCID:3 len=116 
+13:38:59.864 [MAC] DL 0001 LCID:3 len=5747 PAD: len=110 
+13:38:59.866 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:38:59.867 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=329 PAD: len=20 
+13:38:59.868 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:38:59.869 [MAC] DL 0001 LCID:3 len=3120 PAD: len=58 
+13:38:59.887 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:59.895 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:38:59.899 [MAC] UL 0001 SBSR: lcg=2 b=21 LCID:3 len=2 LCID:3 len=126 
+13:38:59.902 [MAC] DL 0001 LCID:3 len=128 PAD: len=17 
+13:38:59.903 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:38:59.904 [MAC] DL 0001 LCID:3 len=128 PAD: len=17 
+13:38:59.907 [MAC] UL 0001 PAD: len=0 SBSR: lcg=2 b=0 LCID:3 len=265 
+13:38:59.912 [MAC] DL 0001 LCID:3 len=106 PAD: len=40 
+13:38:59.939 [MAC] UL 0001 SBSR: lcg=2 b=35 LCID:3 len=118 
+13:38:59.947 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=1979 PAD: len=209 
+13:38:59.948 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:38:59.977 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:38:59.978 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:38:59.979 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 LCID:3 len=64 PAD: len=60 
+13:38:59.979 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:38:59.984 [MAC] DL 0001 LCID:3 len=112 PAD: len=34 
+13:38:59.986 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:38:59.987 [MAC] DL 0001 LCID:3 len=3120 PAD: len=58 
+13:38:59.988 [MAC] DL 0001 LCID:3 len=6404 PAD: len=186 
+13:38:59.989 [MAC] DL 0001 LCID:3 len=7707 
+13:38:59.990 [MAC] DL 0001 LCID:3 len=7707 
+13:38:59.990 [MAC] DL 0001 LCID:3 len=16 PAD: len=54 
+13:39:00.007 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.019 [MAC] UL 0001 SBSR: lcg=2 b=35 LCID:3 len=110 
+13:39:00.019 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:39:00.027 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=2166 PAD: len=22 
+13:39:00.054 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:00.059 [MAC] UL 0001 SBSR: lcg=2 b=25 LCID:3 len=2 LCID:3 len=126 
+13:39:00.059 [MAC] DL 0001 LCID:3 len=4586 
+13:39:00.060 [MAC] DL 0001 LCID:3 len=66 PAD: len=4 
+13:39:00.064 [MAC] DL 0001 LCID:3 len=4649 PAD: len=83 
+13:39:00.065 [MAC] DL 0001 LCID:3 len=4586 
+13:39:00.066 [MAC] DL 0001 LCID:3 len=10 PAD: len=60 
+13:39:00.067 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=439 PAD: len=6 
+13:39:00.067 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.099 [MAC] UL 0001 SBSR: lcg=2 b=29 LCID:3 len=102 
+13:39:00.103 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:00.105 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:00.106 [MAC] DL 0001 LCID:3 len=2291 
+13:39:00.107 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=757 PAD: len=138 
+13:39:00.107 [MAC] DL 0001 LCID:3 len=2945 PAD: len=113 
+13:39:00.108 [MAC] DL 0001 LCID:3 len=136 PAD: len=9 
+13:39:00.127 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.139 [MAC] UL 0001 SBSR: lcg=2 b=27 LCID:3 len=2 LCID:3 len=126 
+13:39:00.145 [MAC] DL 0001 LCID:3 len=115 PAD: len=31 
+13:39:00.147 [MAC] UL 0001 LCID:3 len=668 
+13:39:00.155 [MAC] UL 0001 LCID:3 len=132 
+13:39:00.163 [MAC] UL 0001 SBSR: lcg=2 b=31 LCID:3 len=130 
+13:39:00.171 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=1174 PAD: len=57 
+13:39:00.183 [MAC] DL 0001 LCID:3 len=115 PAD: len=31 
+13:39:00.187 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.189 [MAC] DL 0001 LCID:3 len=115 PAD: len=31 
+13:39:00.196 [MAC] DL 0001 LCID:3 len=115 PAD: len=31 
+13:39:00.200 [MAC] DL 0001 LCID:3 len=115 PAD: len=31 
+13:39:00.204 [MAC] DL 0001 LCID:3 len=115 PAD: len=31 
+13:39:00.208 [MAC] DL 0001 LCID:3 len=344 PAD: len=41 
+13:39:00.211 [MAC] DL 0001 LCID:3 len=1053 PAD: len=38 
+13:39:00.219 [MAC] UL 0001 SBSR: lcg=2 b=28 LCID:3 len=2 LCID:3 len=126 
+13:39:00.227 [MAC] UL 0001 LCID:3 len=716 
+13:39:00.235 [MAC] UL 0001 LCID:3 len=132 
+13:39:00.243 [MAC] UL 0001 SBSR: lcg=2 b=34 LCID:3 len=130 
+13:39:00.251 [MAC] UL 0001 LCID:3 len=1835 
+13:39:00.259 [MAC] UL 0001 LCID:3 len=104 
+13:39:00.263 [MAC] DL 0001 LCID:3 len=310 PAD: len=75 
+13:39:00.265 [MAC] DL 0001 LCID:3 len=1149 PAD: len=86 
+13:39:00.267 [MAC] UL 0001 SBSR: lcg=2 b=8 LCID:3 len=130 
+13:39:00.275 [MAC] UL 0001 LCID:3 len=41 
+13:39:00.280 [MAC] DL 0001 LCID:3 len=5747 PAD: len=110 
+13:39:00.280 [MAC] DL 0001 LCID:3 len=1069 PAD: len=22 
+13:39:00.283 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=2 LCID:3 len=48 PAD: len=74 
+13:39:00.283 [MAC] DL 0001 LCID:3 len=2 LCID:3 len=2218 PAD: len=66 
+13:39:00.288 [MAC] DL 0001 LCID:3 len=909 PAD: len=22 
+13:39:00.290 [MAC] DL 0001 LCID:3 len=1802 PAD: len=30 
+13:39:00.299 [MAC] UL 0001 SBSR: lcg=2 b=24 LCID:3 len=130 
+13:39:00.305 [MAC] DL 0001 LCID:3 len=1053 PAD: len=38 
+13:39:00.307 [MAC] UL 0001 LCID:3 len=404 
+13:39:00.315 [MAC] UL 0001 LCID:3 len=132 
+13:39:00.323 [MAC] UL 0001 SBSR: lcg=2 b=34 LCID:3 len=130 
+13:39:00.331 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=1766 PAD: len=62 
+13:39:00.336 [MAC] DL 0001 LCID:3 len=1469 PAD: len=99 
+13:39:00.337 [MAC] DL 0001 LCID:3 len=1069 PAD: len=22 
+13:39:00.343 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:39:00.354 [MAC] DL 0001 LCID:3 len=2538 PAD: len=35 
+13:39:00.360 [MAC] DL 0001 LCID:3 len=64 PAD: len=10 
+13:39:00.365 [MAC] DL 0001 LCID:3 len=4406 PAD: len=177 
+13:39:00.366 [MAC] DL 0001 LCID:3 len=7971 
+13:39:00.367 [MAC] DL 0001 LCID:3 len=2312 PAD: len=69 
+13:39:00.379 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=21 LCID:3 len=2 LCID:3 len=124 
+13:39:00.387 [MAC] UL 0001 PAD: len=0 LCID:3 len=267 
+13:39:00.395 [MAC] UL 0001 LCID:3 len=132 
+13:39:00.403 [MAC] UL 0001 SBSR: lcg=2 b=23 LCID:3 len=130 
+13:39:00.403 [MAC] DL 0001 LCID:3 len=908 PAD: len=87 
+13:39:00.411 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=292 PAD: len=41 
+13:39:00.411 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.422 [MAC] DL 0001 LCID:3 len=5895 PAD: len=218 
+13:39:00.423 [MAC] DL 0001 LCID:3 len=5895 PAD: len=218 
+13:39:00.432 [MAC] DL 0001 LCID:3 len=5895 PAD: len=218 
+13:39:00.435 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:00.439 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:00.440 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:00.442 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:00.443 [MAC] DL 0001 LCID:3 len=1681 PAD: len=7 
+13:39:00.446 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:00.447 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:00.459 [MAC] UL 0001 SBSR: lcg=2 b=28 LCID:3 len=2 LCID:3 len=126 
+13:39:00.467 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=657 PAD: len=52 
+13:39:00.471 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.486 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:00.488 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:00.489 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:00.491 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:00.495 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:00.497 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:00.499 [MAC] UL 0001 SBSR: lcg=2 b=20 LCID:3 len=102 
+13:39:00.499 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:00.501 [MAC] DL 0001 LCID:3 len=2554 PAD: len=19 
+13:39:00.507 [MAC] UL 0001 LCID:3 len=224 
+13:39:00.515 [MAC] UL 0001 LCID:3 len=132 
+13:39:00.523 [MAC] UL 0001 SBSR: lcg=2 b=17 LCID:3 len=2 LCID:3 len=126 
+13:39:00.531 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=114 PAD: len=12 
+13:39:00.531 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.536 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:00.539 [MAC] DL 0001 LCID:3 len=1469 PAD: len=54 
+13:39:00.540 [MAC] DL 0001 LCID:3 len=7707 
+13:39:00.541 [MAC] DL 0001 LCID:3 len=5513 PAD: len=152 
+13:39:00.579 [MAC] UL 0001 SBSR: lcg=2 b=19 LCID:3 len=110 
+13:39:00.587 [MAC] UL 0001 PAD: len=0 LCID:3 len=2 LCID:3 len=171 
+13:39:00.591 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.595 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=128 
+13:39:00.609 [MAC] DL 0001 LCID:3 len=5895 PAD: len=218 
+13:39:00.617 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:00.618 [MAC] DL 0001 LCID:3 len=3229 PAD: len=69 
+13:39:00.659 [MAC] UL 0001 SBSR: lcg=2 b=20 LCID:3 len=2 LCID:3 len=106 
+13:39:00.667 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=183 PAD: len=34 
+13:39:00.667 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.685 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:39:00.699 [MAC] UL 0001 SBSR: lcg=2 b=29 LCID:3 len=130 
+13:39:00.707 [MAC] UL 0001 LCID:3 len=902 
+13:39:00.715 [MAC] UL 0001 LCID:3 len=132 
+13:39:00.723 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 LCID:3 len=18 PAD: len=106 
+13:39:00.727 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.739 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:00.754 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:00.754 [MAC] DL 0001 LCID:3 len=195 PAD: len=34 
+13:39:00.769 [MAC] DL 0001 LCID:3 len=900 PAD: len=31 
+13:39:00.770 [MAC] DL 0001 LCID:3 len=199 PAD: len=30 
+13:39:00.779 [MAC] UL 0001 SBSR: lcg=2 b=7 LCID:3 len=130 
+13:39:00.787 [MAC] UL 0001 LCID:3 len=2 LCID:3 len=37 
+13:39:00.795 [MAC] UL 0001 LCID:3 len=132 
+13:39:00.803 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=29 PAD: len=99 
+13:39:00.803 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.852 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:00.899 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=26 LCID:3 len=2 LCID:3 len=96 
+13:39:00.907 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=508 PAD: len=33 
+13:39:00.907 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:00.934 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:00.979 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=106 
+13:39:01.027 [MAC] DL 0001 LCID:3 len=425 PAD: len=40 
+13:39:01.028 [MAC] DL 0001 LCID:3 len=429 PAD: len=36 
+13:39:01.059 [MAC] UL 0001 SBSR: lcg=2 b=10 LCID:3 len=2 LCID:3 len=98 
+13:39:01.067 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=39 
+13:39:01.067 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:01.068 [MAC] UL 0001 LBSR: b=0 0 0 0 PAD: len=37 
+13:39:01.098 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:01.139 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=98 
+13:39:01.179 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=56 PAD: len=72 
+13:39:01.179 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:01.259 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=64 PAD: len=64 
+13:39:01.259 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:01.292 [MAC] DL 0001 LCID:3 len=64 PAD: len=6 
+13:39:01.339 [MAC] UL 0001 SBSR: lcg=2 b=19 LCID:3 len=2 LCID:3 len=114 
+13:39:01.347 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=166 PAD: len=3 
+13:39:01.347 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:01.382 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:01.384 [MAC] DL 0001 LCID:3 len=3765 PAD: len=194 
+13:39:01.419 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=11 LCID:3 len=2 LCID:3 len=124 
+13:39:01.427 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=45 PAD: len=35 
+13:39:01.427 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:01.499 [MAC] UL 0001 SBSR: lcg=2 b=11 LCID:3 len=130 
+13:39:01.507 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=46 PAD: len=22 
+13:39:01.507 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:01.544 [MAC] DL 0001 LCID:3 len=310 PAD: len=75 
+13:39:01.579 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 LCID:3 len=56 PAD: len=48 
+13:39:01.579 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:01.619 [MAC] UL 0001 PHR: ph=59 SBSR: lcg=2 b=30 LCID:3 len=120 
+13:39:01.627 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=963 PAD: len=28 
+13:39:01.639 [MAC] DL 0001 LCID:3 len=2 PAD: len=68 
+13:39:01.702 [MAC] DL 0001 LCID:3 len=56 PAD: len=14 
+13:39:01.704 [MAC] DL 0001 LCID:3 len=634 PAD: len=55 
+13:39:01.705 [MAC] DL 0001 LCID:3 len=4553 PAD: len=30 
+13:39:01.706 [MAC] DL 0001 LCID:3 len=2948 PAD: len=110 
+13:39:01.707 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:01.739 [MAC] UL 0001 SBSR: lcg=2 b=24 LCID:3 len=2 LCID:3 len=118 
+13:39:01.747 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=384 PAD: len=13 
+13:39:01.747 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:39:01.775 [MAC] DL 0001 LCID:3 len=5895 PAD: len=218 
+13:39:01.783 [MAC] DL 0001 LCID:3 len=7971 
+13:39:01.784 [MAC] DL 0001 LCID:3 len=7971 
+13:39:01.785 [MAC] DL 0001 LCID:3 len=7640 PAD: len=64 
+13:39:01.819 [MAC] UL 0001 PHR: ph=60 SBSR: lcg=2 b=31 LCID:3 len=2 LCID:3 len=96 
+13:39:01.827 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=1017 PAD: len=118 
+13:39:01.827 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:39:01.852 [MAC] DL 0001 LCID:3 len=2948 PAD: len=110 
+13:39:01.862 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.863 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.867 [MAC] DL 0001 LCID:3 len=2948 PAD: len=110 
+13:39:01.868 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.870 [MAC] DL 0001 LCID:3 len=2948 PAD: len=110 
+13:39:01.872 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.873 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.874 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.875 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.877 [MAC] DL 0001 LCID:3 len=2948 PAD: len=110 
+13:39:01.879 [MAC] DL 0001 LCID:3 len=2948 PAD: len=110 
+13:39:01.880 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.881 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.883 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.885 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.887 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.889 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.891 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.894 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.895 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.896 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.897 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.898 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.899 [MAC] UL 0001 SBSR: lcg=2 b=32 LCID:3 len=2 LCID:3 len=114 
+13:39:01.899 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.900 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.901 [MAC] DL 0001 LCID:3 len=1474 PAD: len=94 
+13:39:01.902 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:01.907 [MAC] UL 0001 SBSR: lcg=2 b=25 LCID:3 len=1332 
+13:39:01.915 [MAC] UL 0001 LCID:3 len=452 
+13:39:01.923 [MAC] UL 0001 LCID:3 len=132 
+13:39:01.931 [MAC] UL 0001 SBSR: lcg=2 b=13 LCID:3 len=130 
+13:39:01.935 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.936 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.939 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=70 PAD: len=2 
+13:39:01.939 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:39:01.942 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:01.943 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:01.944 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.945 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.947 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.948 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:01.949 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:01.950 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:01.951 [MAC] DL 0001 LCID:3 len=4218 PAD: len=29 
+13:39:01.979 [MAC] UL 0001 SBSR: lcg=2 b=30 LCID:3 len=2 LCID:3 len=126 
+13:39:01.987 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=931 PAD: len=156 
+13:39:01.999 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:39:02.059 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=2 b=30 LCID:3 len=128 
+13:39:02.067 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=955 PAD: len=132 
+13:39:02.067 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:39:02.102 [MAC] DL 0001 LCID:3 len=56 PAD: len=18 
+13:39:02.137 [MAC] DL 0001 LCID:3 len=634 PAD: len=7 
+13:39:02.139 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:39:02.139 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:02.140 [MAC] DL 0001 LCID:3 len=7971 
+13:39:02.141 [MAC] DL 0001 LCID:3 len=7971 
+13:39:02.142 [MAC] DL 0001 LCID:3 len=7746 PAD: len=222 
+13:39:02.143 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:02.144 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:02.145 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:02.146 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:02.147 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:02.148 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:02.149 [MAC] DL 0001 LCID:3 len=5895 PAD: len=218 
+13:39:02.150 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:02.151 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:02.152 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:02.153 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:02.154 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:02.155 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:02.156 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:02.157 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:02.158 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:02.159 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:02.160 [MAC] DL 0001 LCID:3 len=1474 PAD: len=49 
+13:39:02.161 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:02.162 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:02.163 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:02.164 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:02.165 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:02.166 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:02.167 [MAC] DL 0001 LCID:3 len=5895 PAD: len=218 
+13:39:02.169 [MAC] DL 0001 LCID:3 len=7368 PAD: len=35 
+13:39:02.170 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:02.171 [MAC] DL 0001 LCID:3 len=4421 PAD: len=162 
+13:39:02.172 [MAC] DL 0001 LCID:3 len=2948 PAD: len=9 
+13:39:02.173 [MAC] DL 0001 LCID:3 len=2634 PAD: len=35 
+13:39:02.179 [MAC] UL 0001 SBSR: lcg=2 b=39 LCID:3 len=118 
+13:39:02.187 [MAC] UL 0001 SBSR: lcg=2 b=32 LCID:3 len=3659 
+13:39:02.188 [MAC] UL 0001 LCID:3 len=356 
+13:39:02.195 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=868 PAD: len=459 
+13:39:02.195 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:39:02.219 [MAC] UL 0001 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=126 
+13:39:02.299 [MAC] UL 0001 SBSR: lcg=2 b=28 LCID:3 len=130 
+13:39:02.307 [MAC] UL 0001 LBSR: b=0 0 0 0 LCID:3 len=701 PAD: len=40 
+13:39:02.307 [MAC] DL 0001 LCID:3 len=2 PAD: len=72 
+13:39:02.334 [MAC] DL 0001 LCID:3 len=56 PAD: len=18 
+13:39:02.379 [MAC] UL 0001 PHR: ph=63 SBSR: lcg=2 b=0 LCID:3 len=2 PAD: len=124 
+13:39:03.379 [MAC] UL 0001 PHR: ph=58 SBSR: lcg=0 b=0 LCID:2 len=31 PAD: len=95 
+13:39:03.379 [RRC] UL 0001 DCCH: UL Information Transfer
+        {
+          message c1: ulInformationTransfer: {
+            criticalExtensions c1: ulInformationTransfer-r8: {
+              dedicatedInfoType dedicatedInfoNAS: '27A3CF34360307450B0BF600F11080010181FD3B6A'H
+            }
+          }
+        }
+
+13:39:03.379 [NAS] UL 0001 EMM: Detach request
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x2 (Integrity protected and ciphered)
+        Auth code = 0xa3cf3436
+        Sequence number = 0x03
+        Protocol discriminator = 0x7 (EPS Mobility Management)
+        Security header = 0x0 (Plain NAS message, not security protected)
+        Message type = 0x45 (Detach request)
+        Detach type = 11 (switch_off=1, combined EPS/IMSI detach)
+        NAS key set identifier = 0
+        GUTI or IMSI:
+          MCC = 001
+          MNC = 01 
+          MME Group ID = 32769
+          MME Code = 1
+          M-TMSI = 0x81fd3b6a
+13:39:03.379 [MAC] DL 0001 LCID:2 len=2 PAD: len=68 
+13:39:03.380 [RRC] DL 0001 DCCH: RRC Connection Release
+        {
+          message c1: rrcConnectionRelease: {
+            rrc-TransactionIdentifier 0,
+            criticalExtensions c1: rrcConnectionRelease-r8: {
+              releaseCause other
+            }
+          }
+        }
+
+13:39:03.381 [MAC] DL 0001 LCID:1 len=9 PAD: len=61 
+13:39:03.426 [MAC] DL 0001 LCID:1 len=6 
+13:39:03.471 [MAC] DL 0001 LCID:1 len=6 
+13:39:03.481 [MAC] -  0001 Freeing UE
