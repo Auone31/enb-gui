@@ -189,13 +189,15 @@ void LogWindow::on_stop_button_clicked()
 }
 
 void LogWindow::on_treeview_row_activated(const Gtk::TreeModel::Path& path,
-        Gtk::TreeViewColumn* column)
+        Gtk::TreeViewColumn* /*column*/)
 {
   refTreeSelection = m_TreeView.get_selection();
   Gtk::TreeModel::iterator iter = refTreeSelection->get_selected();
   {
     Gtk::TreeModel::Row row_sel = *iter;
-    std::cout << "Row activated: ID=" << row_sel << std::endl;
+    std::string strText = row_sel[l_columns.Time];
+
+    std::cout << "Row activated: ID=" << strText << std::endl;
   }
 }
 /*void LogWindow::on_button_all()
