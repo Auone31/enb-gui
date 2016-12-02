@@ -26,7 +26,7 @@ LogWorker::LogWorker() :
 
 // Accesses to these data are synchronized by a mutex.
 
-void LogWorker::get_data(string* a, string* b, string* c, string* d, string* e) const
+void LogWorker::get_data(string* a, string* b, string* c, string* d, string* e, int* f) const
 {
   std::lock_guard<std::mutex> lock(m_Mutex);
 
@@ -35,6 +35,7 @@ void LogWorker::get_data(string* a, string* b, string* c, string* d, string* e) 
     *c = dir;
     *d = ue_id;
     *e = msg;
+    *f = msgcnt-1;
 }
 
 void LogWorker::stop_work()

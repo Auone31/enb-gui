@@ -17,7 +17,7 @@ public:
   // Thread function.
   void do_work(LogWindow * caller);
 
-  void get_data(string* a, string* b, string* c, string* d, string* e) const;
+  void get_data(string* a, string* b, string* c, string* d, string* e, int* f) const;
   void arrange_data(string time, string layer, string dir, string ue_id, string message, string& t, string& l, string& d, string& u, string& m);
   void get_line(char * buff, int l, string& line);
   void stop_work();

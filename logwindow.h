@@ -9,7 +9,7 @@ class LogWindow : public Gtk::Window
 public:
   LogWindow();
   virtual ~LogWindow();
-  void get_data(std::string a, std::string b, std::string c, std::string d, std::string e);
+  void get_data(std::string a, std::string b, std::string c, std::string d, std::string e, int f);
   void notify();
 private:
 
@@ -33,8 +33,9 @@ private:
   public:
 
     Log_Columns()
-    { add(Time); add(Layer); add(Direction); add(UE_ID); add(Info);}
+    { add(Row_Number); add(Time); add(Layer); add(Direction); add(UE_ID); add(Info);}
 
+    Gtk::TreeModelColumn<int> Row_Number;
     Gtk::TreeModelColumn<std::string> Time;
     Gtk::TreeModelColumn<std::string> Layer;
     Gtk::TreeModelColumn<std::string> Direction;

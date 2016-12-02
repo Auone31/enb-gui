@@ -131,7 +131,8 @@ void LogWindow::notify()
 void LogWindow::update_widgets()
 {
   std::string a, b, c, d, e;
-  m_Worker.get_data(&a, &b, &c, &d, &e);
+  int f;
+  m_Worker.get_data(&a, &b, &c, &d, &e, &f);
   Gtk::TreeModel::Row row = *(m_refTreeModel->append());
 
   row[l_columns.Time] = a;
@@ -139,6 +140,7 @@ void LogWindow::update_widgets()
   row[l_columns.Direction] = c;
   row[l_columns.UE_ID] = d;
   row[l_columns.Info] = e;
+  row[l_columns.Row_Number] = f;
 }
 
 void LogWindow::on_notification_from_worker_thread()
@@ -196,8 +198,8 @@ void LogWindow::on_treeview_row_activated(const Gtk::TreeModel::Path& path,
   {
     Gtk::TreeModel::Row row_sel = *iter;
     std::string strText = row_sel[l_columns.Time];
-
-    std::cout << "Row activated: ID=" << strText << std::endl;
+    int row_n = row_sel[l_columns.Row_Number];
+    std::cout << "Row activated: ID=" << row_n << std::endl;
   }
 }
 /*void LogWindow::on_button_all()
