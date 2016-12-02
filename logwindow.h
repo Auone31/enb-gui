@@ -9,7 +9,6 @@ class LogWindow : public Gtk::Window
 public:
   LogWindow();
   virtual ~LogWindow();
-  void get_data(std::string a, std::string b, std::string c, std::string d, std::string e, int f);
   void notify();
 private:
 
@@ -28,7 +27,7 @@ private:
   void update_widgets();
   void on_treeview_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
 
-    class Log_Columns : public Gtk::TreeModel::ColumnRecord
+  class Log_Columns : public Gtk::TreeModel::ColumnRecord
   {
   public:
 

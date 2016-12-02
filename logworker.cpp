@@ -119,6 +119,7 @@ if (log_file)
     counter = 0;
     strEnd = -1;
     strStart = strEnd;
+    msgcnt = 0;
   }
 }
 
