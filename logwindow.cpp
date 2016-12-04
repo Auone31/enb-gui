@@ -5,10 +5,10 @@
 
 LogWindow::LogWindow()
 : m_VBox(Gtk::ORIENTATION_HORIZONTAL),
-  m_Button_All("ALL"),
+  m_Button_Start("Start"),
   m_Button_MAC("MAC"),
   m_Button_RRC("RRC"),
-  m_Button_NAS("NAS"),
+  m_Button_PR("Pause"),
   Stop_Button("Stop"),
   Quit_Button("Quit", true),
   m_Dispatcher(),
@@ -33,10 +33,10 @@ LogWindow::LogWindow()
   m_VBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
 
 
-  m_ButtonBox.pack_start(m_Button_All, Gtk::PACK_SHRINK);
+  m_ButtonBox.pack_start(m_Button_Start, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(m_Button_MAC, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(m_Button_RRC, Gtk::PACK_SHRINK);
-  m_ButtonBox.pack_start(m_Button_NAS, Gtk::PACK_SHRINK);
+  m_ButtonBox.pack_start(m_Button_PR, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(Stop_Button, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(Quit_Button, Gtk::PACK_SHRINK);
   m_ButtonBox.set_border_width(10);
@@ -47,14 +47,14 @@ LogWindow::LogWindow()
 
 
   //Connect signals:
-  m_Button_All.signal_clicked().connect(sigc::mem_fun(*this,
-              &LogWindow::on_button_all) );
+  m_Button_Start.signal_clicked().connect(sigc::mem_fun(*this,
+              &LogWindow::on_button_start) );
   m_Button_MAC.signal_clicked().connect(sigc::mem_fun(*this,
               &LogWindow::on_button_quit) );
   m_Button_RRC.signal_clicked().connect(sigc::mem_fun(*this,
               &LogWindow::on_button_quit) );
-  m_Button_NAS.signal_clicked().connect(sigc::mem_fun(*this,
-              &LogWindow::on_button_quit) );
+  m_Button_PR.signal_clicked().connect(sigc::mem_fun(*this,
+              &LogWindow::on_PR_button_clicked) );
   Stop_Button.signal_clicked().connect(sigc::mem_fun(*this,
               &LogWindow::on_stop_button_clicked) );
   Quit_Button.signal_clicked().connect(sigc::mem_fun(*this,
@@ -111,6 +111,8 @@ void LogWindow::on_button_quit()
     m_Worker.stop_work();
     if (m_WorkerThread->joinable())
       m_WorkerThread->join();
+      delete m_WorkerThread;
+      m_WorkerThread = nullptr;
   }
   hide();
 }
@@ -119,7 +121,7 @@ void LogWindow::update_start_stop_buttons()
 {
   const bool thread_is_running = m_WorkerThread != nullptr;
 
-  m_Button_All.set_sensitive(!thread_is_running);
+  m_Button_Start.set_sensitive(!thread_is_running);
   Stop_Button.set_sensitive(thread_is_running);
 }
 
@@ -145,7 +147,7 @@ void LogWindow::update_widgets()
 
 void LogWindow::on_notification_from_worker_thread()
 {
-  if (m_WorkerThread && m_Worker.has_stopped())
+  if (m_WorkerThread && m_Worker.has_stopped() || m_WorkerThread && m_Worker.has_paused())
   {
     // Work is done.
     if (m_WorkerThread->joinable())
@@ -154,10 +156,13 @@ void LogWindow::on_notification_from_worker_thread()
     m_WorkerThread = nullptr;
     update_start_stop_buttons();
   }
-  update_widgets();
+  else
+  {
+    update_widgets();
+  }
 }
 
-void LogWindow::on_button_all()
+void LogWindow::on_button_start()
 {
   if (m_WorkerThread)
   {
@@ -175,6 +180,24 @@ void LogWindow::on_button_all()
   update_start_stop_buttons();
 }
 
+void LogWindow::on_PR_button_clicked()
+{
+  if (!m_WorkerThread && m_Button_PR.get_label() == "Pause")
+  {
+    std::cout << "Log not running." << std::endl;
+  }
+  else if (m_Button_PR.get_label() == "Pause")
+  {
+    m_Worker.pause_work();
+    m_Button_PR.set_label("Resume");
+  }
+  else
+  {
+    on_button_start();
+    m_Button_PR.set_label("Pause"); 
+  }
+}
+
 void LogWindow::on_stop_button_clicked()
 {
   if (!m_WorkerThread)
@@ -186,7 +209,7 @@ void LogWindow::on_stop_button_clicked()
    // Order the worker thread to stop.
     m_Worker.stop_work();
     Stop_Button.set_sensitive(false);
-    m_Button_All.set_sensitive(true);
+    m_Button_Start.set_sensitive(true);
   }
 }
 

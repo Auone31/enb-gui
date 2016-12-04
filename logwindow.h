@@ -16,10 +16,10 @@ private:
 
   
   //Signal handlers:
-  void on_button_all();
+  void on_button_start();
   void on_button_mac();
   void on_button_rrc();
-  void on_button_nas();
+  void on_PR_button_clicked();
   void on_button_quit();
   void on_stop_button_clicked();
   void on_notification_from_worker_thread();
@@ -55,7 +55,7 @@ private:
   Glib::RefPtr<Gtk::TreeSelection> refTreeSelection;
 
   Gtk::VButtonBox m_ButtonBox;
-  Gtk::Button m_Button_All, m_Button_MAC, m_Button_RRC, m_Button_NAS, Stop_Button, Quit_Button;
+  Gtk::Button m_Button_Start, m_Button_MAC, m_Button_RRC, m_Button_PR, Stop_Button, Quit_Button;
   
   Glib::Dispatcher m_Dispatcher;
   LogWorker m_Worker;

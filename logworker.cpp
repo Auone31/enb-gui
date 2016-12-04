@@ -13,6 +13,8 @@ LogWorker::LogWorker() :
   m_Mutex(),
   m_shall_stop(false),
   m_has_stopped(false),
+  m_shall_pause(false),
+  m_has_paused(false),
   time("0.0"),
   layer("0.0"),
   dir("0.0"),
@@ -50,17 +52,44 @@ bool LogWorker::has_stopped() const
   return m_has_stopped;
 }
 
+void LogWorker::pause_work()
+{
+  std::lock_guard<std::mutex> lock(m_Mutex);
+  m_shall_pause = true;
+}
+
+bool LogWorker::has_paused() const
+{
+  std::lock_guard<std::mutex> lock(m_Mutex);
+  return m_has_paused;
+}
+
+void LogWorker::arrange_data(string time, string layer, string dir, string ue_id, string message, string& t, string& l, string& d, string& u, string& m){
+          t = time;
+          l = layer;
+          d = dir;
+          u = ue_id;
+          m = message;
+}
+
+void LogWorker::get_line(char * buff, int l, string& line){
+  if(buff==0) return;
+  line = string(buff, l);
+}
+
 void LogWorker::do_work(LogWindow* caller)
 {
   {
     std::lock_guard<std::mutex> lock(m_Mutex);
     m_has_stopped = false;
+    m_has_paused = false;
   } // The mutex is unlocked here by lock's destructor.
 
     
 ifstream log_file("enb0.log");
 if (log_file)
   {
+    msgcnt = 0;
     log_file.seekg(0, log_file.end);
     int file_length = log_file.tellg();
     log_file.seekg(0, log_file.beg);
@@ -103,7 +132,7 @@ if (log_file)
           {log_msgs[msgcnt-1].long_content.append(line.append("\n"));}
         }
 
-      if (m_shall_stop)
+      if (m_shall_stop || m_shall_pause)
       {
         break;
       }
@@ -112,26 +141,23 @@ if (log_file)
     delete[] buff;
   } 
  {
+    //std::this_thread::sleep_for(std::chrono::milliseconds(30));
     std::lock_guard<std::mutex> lock(m_Mutex);
-    m_shall_stop = false;
-    m_has_stopped = true;
+    if(m_shall_pause)
+    {
+      m_shall_pause = false;
+      m_has_paused = true; 
+    }
+    else
+    {
+      m_shall_stop = false;  
+      m_has_stopped = true;
+      counter = 0;
+      strEnd = -1;
+      strStart = strEnd;
+    }
     log_file.close();
-    counter = 0;
-    strEnd = -1;
-    strStart = strEnd;
-    msgcnt = 0;
+    caller -> notify();
   }
 }
 
-void LogWorker::arrange_data(string time, string layer, string dir, string ue_id, string message, string& t, string& l, string& d, string& u, string& m){
-          t = time;
-          l = layer;
-          d = dir;
-          u = ue_id;
-          m = message;
-}
-
-void LogWorker::get_line(char * buff, int l, string& line){
-  if(buff==0) return;
-  line = string(buff, l);
-}
