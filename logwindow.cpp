@@ -5,6 +5,10 @@
 
 LogWindow::LogWindow()
 : m_VBox(Gtk::ORIENTATION_HORIZONTAL),
+  m_TreeBox(Gtk::ORIENTATION_HORIZONTAL),
+  m_TextBox(Gtk::ORIENTATION_HORIZONTAL),
+  Frame_TreeView(),
+  Frame_TextView("Details"),
   m_Button_Start("Start"),
   m_Button_MAC("MAC"),
   m_Button_RRC("RRC"),
@@ -17,29 +21,29 @@ LogWindow::LogWindow()
 {
   set_title("Nutaq-Amarisoft");
   set_border_width(5);
-  set_default_size(1000, 1000);
+  set_default_size(2000, 1000);
 
   add(m_VBox);
-
+  m_VBox.pack_start(Frame_TreeView, Gtk::PACK_EXPAND_WIDGET, 10);
+  m_TreeBox.set_border_width(10);
+  Frame_TreeView.add(m_TreeBox);
   //Add the TreeView, inside a ScrolledWindow, with the button underneath:
   m_ScrolledWindow.add(m_TreeView);
 
   //Only show the scrollbars when they are necessary:
   m_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
 
-  m_VBox.pack_end(m_ScrolledWindow);
+  m_TreeBox.pack_end(m_ScrolledWindow);
 
   //Add buttons:
-  m_VBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
-
-
+  m_TreeBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(m_Button_Start, Gtk::PACK_SHRINK);
-  m_ButtonBox.pack_start(m_Button_MAC, Gtk::PACK_SHRINK);
-  m_ButtonBox.pack_start(m_Button_RRC, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(m_Button_PR, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(Stop_Button, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(Quit_Button, Gtk::PACK_SHRINK);
-  m_ButtonBox.set_border_width(10);
+  m_ButtonBox.pack_start(m_Button_MAC, Gtk::PACK_SHRINK);
+  m_ButtonBox.pack_start(m_Button_RRC, Gtk::PACK_SHRINK);
+  m_ButtonBox.set_border_width(20);
   m_ButtonBox.set_spacing(10);
   m_ButtonBox.set_layout(Gtk::BUTTONBOX_START);
 
@@ -60,23 +64,13 @@ LogWindow::LogWindow()
   Quit_Button.signal_clicked().connect(sigc::mem_fun(*this,
               &LogWindow::on_button_quit) );
 
- 
-
-  //fill_buffers();
-  //on_button_all();
   //Create the Tree model:
   m_refTreeModel = Gtk::ListStore::create(l_columns);
   m_TreeView.set_model(m_refTreeModel);
-  
-
-  
-
-  //Fill the TreeView's model
    // Connect the handler to the dispatcher.
   m_Dispatcher.connect(sigc::mem_fun(*this, &LogWindow::on_notification_from_worker_thread));
-
   
-  //Add the TreeView's view columns:
+  //Add the TreeView's view columns
   //This number will be shown with the default numeric formatting.
   m_TreeView.append_column("Time", l_columns.Time);
   m_TreeView.append_column("Layer", l_columns.Layer);
@@ -86,18 +80,16 @@ LogWindow::LogWindow()
 
   m_TreeView.signal_row_activated().connect(sigc::mem_fun(*this,
               &LogWindow::on_treeview_row_activated) );
+  
+  m_VBox.pack_end(Frame_TextView, Gtk::PACK_EXPAND_WIDGET, 5);
+  m_TextBox.set_border_width(10);
+  Frame_TextView.add(m_TextBox);
+  text_ScrolledWindow.add(m_TextView);
+  text_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+  m_TextBox.pack_start(text_ScrolledWindow);
+
   show_all_children();
 }
-
-/*void LogWindow::fill_buffers()
-{
-  m_refTextBuffer1 = Gtk::TextBuffer::create();
-  m_refTextBuffer1->set_text(std::to_string(4));
-
-  m_refTextBuffer2 = Gtk::TextBuffer::create();
-  m_refTextBuffer2->set_text("This is some alternative text \n, from TextBuffer #2. This is some alternative text, from TextBuffer #2.This is some alternative text, from TextBuffer #2.This is some alternative text, from TextBuffer #2.This is some alternative text, from TextBuffer #2.This is some alternative text, from TextBuffer #2.This is some alternative text, from TextBuffer #2.This is some alternative text, from TextBuffer #2.This is some alternative text, from TextBuffer #2.This is some alternative text, from TextBuffer #2.This is some alternative text, from TextBuffer #2.This is some alternative text, from TextBuffer #2.");
-
-}*/
 
 LogWindow::~LogWindow()
 {
@@ -223,36 +215,9 @@ void LogWindow::on_treeview_row_activated(const Gtk::TreeModel::Path& path,
     std::string strText = row_sel[l_columns.Time];
     int row_n = row_sel[l_columns.Row_Number];
     std::cout << "Row activated: ID=" << row_n << std::endl;
+    m_refTextBuffer = Gtk::TextBuffer::create();
+    m_refTextBuffer->set_text(std::to_string(row_n));
+    m_TextView.set_buffer(m_refTextBuffer);
   }
 }
-/*void LogWindow::on_button_all()
-{
-  m_TextView.set_buffer(m_refTextBuffer1);
-}
 
-void LogWindow::on_button_mac()
-{
-  m_TextView.set_buffer(m_refTextBuffer2);
-}
-
-void LogWindow::on_button_rrc()
-{
-  m_TextView.set_buffer(m_refTextBuffer2);
-}
-
-void LogWindow::on_button_nas()
-{
-  m_TextView.set_buffer(m_refTextBuffer2);
-}*/
-
-/*void LogWindow::get_data(std::string a, std::string b, std::string c, std::string d, std::string e){
-  //m_refTreeModel = Gtk::ListStore::create(l_columns);
-  //m_TreeView.set_model(m_refTreeModel);
-  Gtk::TreeModel::Row row = *(m_refTreeModel->append());
-  row[l_columns.Time] = a;
-  row[l_columns.Layer] = b;
-  row[l_columns.Direction] = c;
-  row[l_columns.UE_ID] = d;
-  row[l_columns.Info] = e;
-  //show_all_children();
-}*/

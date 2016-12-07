@@ -44,19 +44,22 @@ private:
 
 
   //Child widgets:
-  Gtk::Box m_VBox;
+  Gtk::Box m_VBox, m_TreeBox, m_TextBox;
+  //Gtk::Paned m_VBox;
   Log_Columns l_columns;
 
-  Gtk::ScrolledWindow m_ScrolledWindow;
+  Gtk::ScrolledWindow m_ScrolledWindow, text_ScrolledWindow;
   Gtk::TreeView m_TreeView;
+  Gtk::TextView m_TextView;
 
-  Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer1, m_refTextBuffer2;
+  Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer;
   Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
   Glib::RefPtr<Gtk::TreeSelection> refTreeSelection;
 
   Gtk::VButtonBox m_ButtonBox;
   Gtk::Button m_Button_Start, m_Button_MAC, m_Button_RRC, m_Button_PR, Stop_Button, Quit_Button;
   
+  Gtk::Frame Frame_TreeView, Frame_TextView;
   Glib::Dispatcher m_Dispatcher;
   LogWorker m_Worker;
   std::thread* m_WorkerThread;
