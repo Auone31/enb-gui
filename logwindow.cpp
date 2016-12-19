@@ -1,7 +1,6 @@
 #include "logwindow.h"
 #include "logworker.h"
 #include "logworker.cpp"
-#include <string>
 
 LogWindow::LogWindow()
 : m_VBox(Gtk::ORIENTATION_HORIZONTAL),

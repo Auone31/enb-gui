@@ -1,12 +1,10 @@
 #ifndef GTKMM_LOGWORKER_H
 #define GTKMM_LOGWORKER_H
 
-#include <gtkmm.h>
 #include <thread>
 #include <mutex>
 #include <condition_variable>
 #include "logMessage.h"
-using namespace std;
 
 class LogWindow;
 
@@ -46,7 +44,7 @@ private:
   log_message log_msgs[10000];
   int msgcnt;
   string line, last_msg;
-  std::condition_variable wait_condition;
+  condition_variable wait_condition;
 };
 
 #endif // GTKMM_EXAMPLEWORKER_H

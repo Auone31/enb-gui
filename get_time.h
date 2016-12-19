@@ -1,6 +1,4 @@
-using namespace std;
-
-void convert_to_time(string line_read, int& a, int& b, int& c, int& d, string& e)
+void convert_to_time(std::string line_read, int& a, int& b, int& c, int& d, std::string & e)
 {
   a = stoi (line_read);
   b = stoi (line_read.substr(3,2));

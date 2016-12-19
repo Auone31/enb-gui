@@ -1,11 +1,4 @@
-#include <sstream>
-#include <fstream>
-#include <iostream>
-#include <chrono>
-#include <string>
 #include "logworker.h"
-
-using namespace std;
 
 LogWorker::LogWorker() :
   m_Mutex(),
@@ -117,11 +110,11 @@ bool LogWorker::has_paused() const
 ****************************************************************************/ 
 void LogWorker::arrange_data(string time, string layer, string dir, string ue_id, string message, string& t, string& l, string& d, string& u, string& m)
 {
-          t = time;
-          l = layer;
-          d = dir;
-          u = ue_id;
-          m = message;
+  t = time;
+  l = layer;
+  d = dir;
+  u = ue_id;
+  m = message;
 }
 
 
@@ -200,18 +193,24 @@ if (log_file)
       // This is where it begins
       if (isdigit(line[0]))
       { 
-        {
+        {  
         std::unique_lock<std::mutex> lock(m_Mutex);
         if(!resume_work || m_shall_pause)
         {
-        wait_condition.wait(lock, [this]{return resume_work;});
-        m_shall_pause = false;
+          //Wait for notification from the caller
+          wait_condition.wait(lock, [this]{return resume_work;});
+          m_shall_pause = false;
         }
+
+        //Sort pulled line in correct format
         log_msgs[msgcnt].sort_message(line);
+
         arrange_data(log_msgs[msgcnt].time, log_msgs[msgcnt].layer, log_msgs[msgcnt].dir,
           log_msgs[msgcnt].ue_id, log_msgs[msgcnt].short_content, 
           time, layer, dir, ue_id, msg);
+
         msgcnt++;
+
         resume_work = false;
         }
         caller -> notify();

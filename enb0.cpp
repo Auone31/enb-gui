@@ -4,9 +4,6 @@
 #include "logwindow.h"
 #include "logwindow.cpp"
 
-using namespace std;
-
-
 int main(int argc, char *argv[])
 {
 auto app = 
@@ -14,6 +11,4 @@ auto app =
     LogWindow window;
   
 return app->run(window);
-
-    
 }

@@ -1,8 +1,5 @@
-#include <iostream>
-#include <fstream>
 #include "get_time.h"
 #include "printing_log.h"
-using namespace std;
 
 class log_message{
 public:
