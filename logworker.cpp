@@ -25,7 +25,14 @@ LogWorker::LogWorker() :
 {
 }
 
-// Accesses to these data are synchronized by a mutex.
+/****************************************************************************
+* Function: get_data(string* a, string* b, string* c, string* d, string* e, int* f) const
+*****************************************************************************
+*
+* Accesses to these data are synchronized by a mutex.
+*
+*
+****************************************************************************/ 
 
 void LogWorker::get_data(string* a, string* b, string* c, string* d, string* e, int* f) const
 {
@@ -39,31 +46,66 @@ void LogWorker::get_data(string* a, string* b, string* c, string* d, string* e, 
     *f = msgcnt-1;
 }
 
+
+/****************************************************************************
+* Function: stop_work()
+*****************************************************************************
+*
+* Tells the worker to stop after finishing the current 
+* task. Works with Stop and Quit buttons 
+*
+****************************************************************************/ 
 void LogWorker::stop_work()
 {
   std::lock_guard<std::mutex> lock(m_Mutex);
   m_shall_stop = true;
 }
 
+
+/****************************************************************************
+* Function: has_stopped() const
+*****************************************************************************
+*
+* Confirms that the worker has stopped
+* 
+*
+****************************************************************************/ 
 bool LogWorker::has_stopped() const
 {
   std::lock_guard<std::mutex> lock(m_Mutex);
   return m_has_stopped;
 }
 
+
+/****************************************************************************
+* Function: pause_work()
+*****************************************************************************
+*
+* Tells the worker to stop after finishing the current 
+* task. Works with Pause button 
+*
+****************************************************************************/ 
 void LogWorker::pause_work()
 {
   std::lock_guard<std::mutex> lock(m_Mutex);
   m_shall_pause = true;
 }
-
+/****************************************************************************
+* Function: has_paused() const
+*****************************************************************************
+*
+* Confirms that the worker has paused
+* This functionality still has to be added
+*
+****************************************************************************/ 
 bool LogWorker::has_paused() const
 {
   std::lock_guard<std::mutex> lock(m_Mutex);
   return m_has_paused;
 }
 
-void LogWorker::arrange_data(string time, string layer, string dir, string ue_id, string message, string& t, string& l, string& d, string& u, string& m){
+void LogWorker::arrange_data(string time, string layer, string dir, string ue_id, string message, string& t, string& l, string& d, string& u, string& m)
+{
           t = time;
           l = layer;
           d = dir;
@@ -71,12 +113,14 @@ void LogWorker::arrange_data(string time, string layer, string dir, string ue_id
           m = message;
 }
 
-void LogWorker::get_line(char * buff, int l, string& line){
+void LogWorker::get_line(char * buff, int l, string& line)
+{
   if(buff==0) return;
   line = string(buff, l);
 }
 
-void LogWorker::notify_thread(){
+void LogWorker::notify_thread()
+{
   {
     std::lock_guard<std::mutex> lock(m_Mutex);
     resume_work = true;
@@ -89,7 +133,6 @@ void LogWorker::do_work(LogWindow * caller)
   {
     std::lock_guard<std::mutex> lock(m_Mutex);
     m_has_stopped = false;
-    m_has_paused = false;
   } // The mutex is unlocked here by lock's destructor.
 
     
@@ -122,9 +165,10 @@ if (log_file)
       { 
         {
         std::unique_lock<std::mutex> lock(m_Mutex);
-        if(!resume_work)
+        if(!resume_work || m_shall_pause)
         {
         wait_condition.wait(lock, [this]{return resume_work;});
+        m_shall_pause = false;
         }
         log_msgs[msgcnt].sort_message(line);
         arrange_data(log_msgs[msgcnt].time, log_msgs[msgcnt].layer, log_msgs[msgcnt].dir,
@@ -142,7 +186,7 @@ if (log_file)
           {log_msgs[msgcnt-1].long_content.append(line.append("\n"));}
         }
 
-      if (m_shall_stop || m_shall_pause)
+      if (m_shall_stop)
       {
         break;
       }
@@ -153,22 +197,15 @@ if (log_file)
   {
     std::unique_lock<std::mutex> lock(m_Mutex);
     wait_condition.wait(lock, [this]{return resume_work;});
-    if(m_shall_pause)
-    {
-      m_shall_pause = false;
-      m_has_paused = true; 
-    }
-    else
-    {
-      m_shall_stop = false;  
-      m_has_stopped = true;
-      counter = 0;
-      strEnd = -1;
-      strStart = strEnd;
-      msgcnt = 0;
-    }
+    m_shall_stop = false;  
+    m_has_stopped = true;
+    counter = 0;
+    strEnd = -1;
+    strStart = strEnd;
+    msgcnt = 0;
+  }
     log_file.close();
     caller -> notify();
-  }
+ 
 }
 

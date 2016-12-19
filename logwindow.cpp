@@ -187,7 +187,7 @@ void LogWindow::on_PR_button_clicked()
   }
   else
   {
-    on_button_start();
+    m_Worker.notify_thread();
     m_Button_PR.set_label("Pause");
   }
 }
