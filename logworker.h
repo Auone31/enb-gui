@@ -4,6 +4,7 @@
 #include <gtkmm.h>
 #include <thread>
 #include <mutex>
+#include <condition_variable>
 #include "logMessage.h"
 using namespace std;
 
@@ -23,6 +24,7 @@ public:
   void pause_work();
   bool has_stopped() const;
   bool has_paused() const;
+  void notify_thread();
   
 
 private:
@@ -39,10 +41,12 @@ private:
   bool m_has_stopped;
   bool m_shall_pause;
   bool m_has_paused;
+  bool resume_work;
   int counter, strEnd, strStart;
   log_message log_msgs[10000];
   int msgcnt;
   string line, last_msg;
+  std::condition_variable wait_condition;
 };
 
 #endif // GTKMM_EXAMPLEWORKER_H

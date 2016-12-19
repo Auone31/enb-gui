@@ -2,9 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <chrono>
-#include <thread>
 #include <string>
-#include <mutex>
 #include "logworker.h"
 
 using namespace std;
@@ -15,6 +13,7 @@ LogWorker::LogWorker() :
   m_has_stopped(false),
   m_shall_pause(false),
   m_has_paused(false),
+  resume_work(true),
   time("0.0"),
   layer("0.0"),
   dir("0.0"),
@@ -77,6 +76,14 @@ void LogWorker::get_line(char * buff, int l, string& line){
   line = string(buff, l);
 }
 
+void LogWorker::notify_thread(){
+  {
+    std::lock_guard<std::mutex> lock(m_Mutex);
+    resume_work = true;
+  }
+  wait_condition.notify_all();
+}
+
 void LogWorker::do_work(LogWindow * caller)
 {
   {
@@ -114,15 +121,19 @@ if (log_file)
       if (isdigit(line[0]))
       { 
         {
-        std::lock_guard<std::mutex> lock(m_Mutex);
+        std::unique_lock<std::mutex> lock(m_Mutex);
+        if(!resume_work)
+        {
+        wait_condition.wait(lock, [this]{return resume_work;});
+        }
         log_msgs[msgcnt].sort_message(line);
         arrange_data(log_msgs[msgcnt].time, log_msgs[msgcnt].layer, log_msgs[msgcnt].dir,
           log_msgs[msgcnt].ue_id, log_msgs[msgcnt].short_content, 
           time, layer, dir, ue_id, msg);
         msgcnt++;
+        resume_work = false;
         }
         caller -> notify();
-        std::this_thread::sleep_for(std::chrono::milliseconds(45));
       }
         
       // Storing Long Messages
@@ -139,9 +150,9 @@ if (log_file)
     }
     delete[] buff;
   } 
- {
-    //std::this_thread::sleep_for(std::chrono::milliseconds(30));
-    std::lock_guard<std::mutex> lock(m_Mutex);
+  {
+    std::unique_lock<std::mutex> lock(m_Mutex);
+    wait_condition.wait(lock, [this]{return resume_work;});
     if(m_shall_pause)
     {
       m_shall_pause = false;

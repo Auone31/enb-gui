@@ -135,6 +135,8 @@ void LogWindow::update_widgets()
   row[l_columns.UE_ID] = d;
   row[l_columns.Info] = e;
   row[l_columns.Row_Number] = f;
+
+  m_Worker.notify_thread();
 }
 
 void LogWindow::on_notification_from_worker_thread()
