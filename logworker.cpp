@@ -90,6 +90,8 @@ void LogWorker::pause_work()
   std::lock_guard<std::mutex> lock(m_Mutex);
   m_shall_pause = true;
 }
+
+
 /****************************************************************************
 * Function: has_paused() const
 *****************************************************************************
@@ -104,6 +106,15 @@ bool LogWorker::has_paused() const
   return m_has_paused;
 }
 
+
+/****************************************************************************
+* Function: arrange_data(string time, string layer, string dir, string ue_id, string message, string& t, string& l, string& d, string& u, string& m)
+*****************************************************************************
+*
+* Assign Data to the correct variables for the caller to access
+*
+*
+****************************************************************************/ 
 void LogWorker::arrange_data(string time, string layer, string dir, string ue_id, string message, string& t, string& l, string& d, string& u, string& m)
 {
           t = time;
@@ -113,12 +124,30 @@ void LogWorker::arrange_data(string time, string layer, string dir, string ue_id
           m = message;
 }
 
+
+/****************************************************************************
+* Function: get_line(char * buff, int l, string& line)
+*****************************************************************************
+*
+* Arranges buffered content into a string
+*
+*
+****************************************************************************/ 
 void LogWorker::get_line(char * buff, int l, string& line)
 {
   if(buff==0) return;
   line = string(buff, l);
 }
 
+
+/****************************************************************************
+* Function: notify_thread()
+*****************************************************************************
+*
+* Notifies the worker thread to resume work
+*
+*
+****************************************************************************/ 
 void LogWorker::notify_thread()
 {
   {
@@ -128,6 +157,14 @@ void LogWorker::notify_thread()
   wait_condition.notify_all();
 }
 
+/****************************************************************************
+* Function: do_work(LogWindow * caller)
+*****************************************************************************
+*
+* Loads the log file in memory, reads the contents and sorts the data to be
+* displayed in the GUI.
+*
+****************************************************************************/ 
 void LogWorker::do_work(LogWindow * caller)
 {
   {
