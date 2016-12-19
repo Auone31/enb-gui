@@ -186,7 +186,7 @@ void LogWindow::on_PR_button_clicked()
   else
   {
     on_button_start();
-    m_Button_PR.set_label("Pause"); 
+    m_Button_PR.set_label("Pause");
   }
 }
 
@@ -200,8 +200,6 @@ void LogWindow::on_stop_button_clicked()
   {
    // Order the worker thread to stop.
     m_Worker.stop_work();
-    Stop_Button.set_sensitive(false);
-    m_Button_Start.set_sensitive(true);
   }
 }
 

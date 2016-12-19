@@ -77,7 +77,7 @@ void LogWorker::get_line(char * buff, int l, string& line){
   line = string(buff, l);
 }
 
-void LogWorker::do_work(LogWindow* caller)
+void LogWorker::do_work(LogWindow * caller)
 {
   {
     std::lock_guard<std::mutex> lock(m_Mutex);
@@ -89,7 +89,6 @@ void LogWorker::do_work(LogWindow* caller)
 ifstream log_file("enb0.log");
 if (log_file)
   {
-    msgcnt = 0;
     log_file.seekg(0, log_file.end);
     int file_length = log_file.tellg();
     log_file.seekg(0, log_file.beg);
@@ -114,7 +113,6 @@ if (log_file)
       // This is where it begins
       if (isdigit(line[0]))
       { 
-        std::this_thread::sleep_for(std::chrono::milliseconds(30));
         {
         std::lock_guard<std::mutex> lock(m_Mutex);
         log_msgs[msgcnt].sort_message(line);
@@ -122,8 +120,9 @@ if (log_file)
           log_msgs[msgcnt].ue_id, log_msgs[msgcnt].short_content, 
           time, layer, dir, ue_id, msg);
         msgcnt++;
-        caller -> notify();
         }
+        caller -> notify();
+        std::this_thread::sleep_for(std::chrono::milliseconds(45));
       }
         
       // Storing Long Messages
@@ -155,6 +154,7 @@ if (log_file)
       counter = 0;
       strEnd = -1;
       strStart = strEnd;
+      msgcnt = 0;
     }
     log_file.close();
     caller -> notify();
