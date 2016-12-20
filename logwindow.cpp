@@ -271,11 +271,13 @@ void LogWindow::on_PR_button_clicked()
   {
     m_Worker.pause_work();
     m_Button_PR.set_label("Resume");
+    Stop_Button.set_sensitive(false);
   }
   else
   {
     m_Worker.resume_thread();
     m_Button_PR.set_label("Pause");
+    Stop_Button.set_sensitive(true);
   }
 }
 
