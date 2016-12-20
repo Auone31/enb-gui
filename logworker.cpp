@@ -26,7 +26,6 @@ LogWorker::LogWorker() :
 * 
 *
 ****************************************************************************/ 
-
 void LogWorker::get_data(string* a, string* b, string* c, string* d, string* e, int* f) const
 {
   std::lock_guard<std::mutex> lock(m_Mutex);
@@ -39,6 +38,7 @@ void LogWorker::get_data(string* a, string* b, string* c, string* d, string* e, 
     *f = msgcnt-1;
 }
 
+
 /****************************************************************************
 * Function: get_text(int msg_num, std::string & text) const
 *****************************************************************************
@@ -47,7 +47,6 @@ void LogWorker::get_data(string* a, string* b, string* c, string* d, string* e, 
 * 
 *
 ****************************************************************************/ 
-
 void LogWorker::get_text(int msg_num, std::string & text) const
 {
   std::lock_guard<std::mutex> lock(m_Mutex);
