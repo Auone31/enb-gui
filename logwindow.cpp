@@ -96,6 +96,15 @@ LogWindow::~LogWindow()
 {
 }
 
+
+/****************************************************************************
+* Function: on_button_quit()
+*****************************************************************************
+*
+* Stops the worker thread if it is running, hides the window
+* 
+*
+****************************************************************************/ 
 void LogWindow::on_button_quit()
 {
   if (m_WorkerThread)
@@ -110,6 +119,15 @@ void LogWindow::on_button_quit()
   hide();
 }
 
+
+/****************************************************************************
+* Function: update_start_stop_buttons()
+*****************************************************************************
+*
+* Updates the sensitivity of Start/Stop Buttons
+* 
+*
+****************************************************************************/
 void LogWindow::update_start_stop_buttons()
 {
   const bool thread_is_running = m_WorkerThread != nullptr;
@@ -118,11 +136,29 @@ void LogWindow::update_start_stop_buttons()
   Stop_Button.set_sensitive(thread_is_running);
 }
 
+
+/****************************************************************************
+* Function: notify()
+*****************************************************************************
+*
+* Used by worker thread to notify the caller that data is ready to be
+* displayed
+*
+****************************************************************************/
 void LogWindow::notify()
 {
   m_Dispatcher.emit();
 }
 
+
+/****************************************************************************
+* Function: update_widgets()
+*****************************************************************************
+*
+* Addeds newly received data to the TreeView, notifies the worker to resume
+* 
+*
+****************************************************************************/
 void LogWindow::update_widgets()
 {
   std::string a, b, c, d, e;
@@ -140,9 +176,18 @@ void LogWindow::update_widgets()
   m_Worker.notify_thread();
 }
 
+
+/****************************************************************************
+* Function: on_notification_from_worker_thread()
+*****************************************************************************
+*
+* Joins the worker thread if it has finished work. Updates the Treeview 
+* 
+*
+****************************************************************************/
 void LogWindow::on_notification_from_worker_thread()
 {
-  if (m_WorkerThread && m_Worker.has_stopped() || m_WorkerThread && m_Worker.has_paused())
+  if (m_WorkerThread && m_Worker.has_stopped() /*|| m_WorkerThread && m_Worker.has_paused()*/)
   {
     // Work is done.
     if (m_WorkerThread->joinable())
@@ -157,6 +202,15 @@ void LogWindow::on_notification_from_worker_thread()
   }
 }
 
+
+/****************************************************************************
+* Function: on_button_start()
+*****************************************************************************
+*
+* Creates a new thread if none is running. Tells the worker to start work.
+* 
+*
+****************************************************************************/
 void LogWindow::on_button_start()
 {
   if (m_WorkerThread)
@@ -175,6 +229,15 @@ void LogWindow::on_button_start()
   update_start_stop_buttons();
 }
 
+
+/****************************************************************************
+* Function: on_PR_button_clicked()
+*****************************************************************************
+*
+* Pauses work. Updates the Pause/Resume button.
+* 
+*
+****************************************************************************/
 void LogWindow::on_PR_button_clicked()
 {
   if (!m_WorkerThread && m_Button_PR.get_label() == "Pause")
@@ -193,6 +256,15 @@ void LogWindow::on_PR_button_clicked()
   }
 }
 
+
+/****************************************************************************
+* Function: on_stop_button_clicked()
+*****************************************************************************
+*
+* If worker thread is running, tells it to stop.
+* 
+*
+****************************************************************************/
 void LogWindow::on_stop_button_clicked()
 {
   if (!m_WorkerThread)
@@ -206,6 +278,16 @@ void LogWindow::on_stop_button_clicked()
   }
 }
 
+
+/****************************************************************************
+* Function: on_treeview_row_activated(const Gtk::TreeModel::Path& path,
+        Gtk::TreeViewColumn*)
+*****************************************************************************
+*
+* Displays the long content in TextView for the selected row in TreeView.
+* 
+*
+****************************************************************************/
 void LogWindow::on_treeview_row_activated(const Gtk::TreeModel::Path& path,
         Gtk::TreeViewColumn* /*column*/)
 {
