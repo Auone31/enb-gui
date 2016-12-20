@@ -55,7 +55,6 @@ private:
   Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer;
   Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
   Glib::RefPtr<Gtk::TreeSelection> refTreeSelection;
-
   Gtk::VButtonBox m_ButtonBox;
   Gtk::Button m_Button_Start, m_Button_MAC, m_Button_RRC, m_Button_PR, Stop_Button, Quit_Button;
   

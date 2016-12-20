@@ -77,15 +77,17 @@ LogWindow::LogWindow()
   m_TreeView.append_column("UE ID", l_columns.UE_ID);
   m_TreeView.append_column("INFO", l_columns.Info);
 
-  m_TreeView.signal_row_activated().connect(sigc::mem_fun(*this,
-              &LogWindow::on_treeview_row_activated) );
   
+
   m_VBox.pack_end(Frame_TextView, Gtk::PACK_EXPAND_WIDGET, 5);
   m_TextBox.set_border_width(10);
   Frame_TextView.add(m_TextBox);
   text_ScrolledWindow.add(m_TextView);
   text_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
   m_TextBox.pack_start(text_ScrolledWindow);
+
+  m_TreeView.signal_row_activated().connect(sigc::mem_fun(*this,
+              &LogWindow::on_treeview_row_activated) );
 
   show_all_children();
 }
@@ -211,12 +213,11 @@ void LogWindow::on_treeview_row_activated(const Gtk::TreeModel::Path& path,
   Gtk::TreeModel::iterator iter = refTreeSelection->get_selected();
   {
     Gtk::TreeModel::Row row_sel = *iter;
-    std::string strText = row_sel[l_columns.Time];
+    std::string strText;
     int row_n = row_sel[l_columns.Row_Number];
-    std::cout << "Row activated: ID=" << row_n << std::endl;
+    m_Worker.get_text(row_n, strText);
     m_refTextBuffer = Gtk::TextBuffer::create();
-    m_refTextBuffer->set_text(std::to_string(row_n));
+    m_refTextBuffer->set_text(strText);
     m_TextView.set_buffer(m_refTextBuffer);
   }
 }
-

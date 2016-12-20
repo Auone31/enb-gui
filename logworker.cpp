@@ -23,7 +23,7 @@ LogWorker::LogWorker() :
 *****************************************************************************
 *
 * Accesses to these data are synchronized by a mutex.
-*
+* 
 *
 ****************************************************************************/ 
 
@@ -37,6 +37,21 @@ void LogWorker::get_data(string* a, string* b, string* c, string* d, string* e, 
     *d = ue_id;
     *e = msg;
     *f = msgcnt-1;
+}
+
+/****************************************************************************
+* Function: get_text(int msg_num, std::string & text) const
+*****************************************************************************
+*
+* Sets the messge to be displayed in the text view 
+* 
+*
+****************************************************************************/ 
+
+void LogWorker::get_text(int msg_num, std::string & text) const
+{
+  std::lock_guard<std::mutex> lock(m_Mutex);
+  text = log_msgs[msg_num].long_content;
 }
 
 
