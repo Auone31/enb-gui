@@ -23,18 +23,35 @@ LogWindow::LogWindow()
   set_default_size(2000, 1000);
 
   add(m_VBox);
+
+
+  /*****************************************************************************
+  * Add the tree view frame with scrollable window
+  *****************************************************************************/
   m_VBox.pack_start(Frame_TreeView, Gtk::PACK_EXPAND_WIDGET, 10);
   m_TreeBox.set_border_width(10);
   Frame_TreeView.add(m_TreeBox);
   //Add the TreeView, inside a ScrolledWindow, with the button underneath:
   m_ScrolledWindow.add(m_TreeView);
-
   //Only show the scrollbars when they are necessary:
   m_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
-
   m_TreeBox.pack_end(m_ScrolledWindow);
 
-  //Add buttons:
+
+  /*****************************************************************************
+  * Add the text view frame with scrollable window
+  *****************************************************************************/
+  m_VBox.pack_end(Frame_TextView, Gtk::PACK_EXPAND_WIDGET, 5);
+  m_TextBox.set_border_width(10);
+  Frame_TextView.add(m_TextBox);
+  text_ScrolledWindow.add(m_TextView);
+  text_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+  m_TextBox.pack_start(text_ScrolledWindow);
+
+  
+  /*****************************************************************************
+  * Add buttons 
+  *****************************************************************************/
   m_TreeBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(m_Button_Start, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(m_Button_PR, Gtk::PACK_SHRINK);
@@ -46,10 +63,10 @@ LogWindow::LogWindow()
   m_ButtonBox.set_spacing(10);
   m_ButtonBox.set_layout(Gtk::BUTTONBOX_START);
 
-  
 
-
-  //Connect signals:
+  /*****************************************************************************
+  * Connect Signals to buttons 
+  *****************************************************************************/
   m_Button_Start.signal_clicked().connect(sigc::mem_fun(*this,
               &LogWindow::on_button_start) );
   m_Button_MAC.signal_clicked().connect(sigc::mem_fun(*this,
@@ -63,32 +80,38 @@ LogWindow::LogWindow()
   Quit_Button.signal_clicked().connect(sigc::mem_fun(*this,
               &LogWindow::on_button_quit) );
 
-  //Create the Tree model:
+
+  /*****************************************************************************
+  * Action to perform on row selection
+  *****************************************************************************/
+  m_TreeView.signal_row_activated().connect(sigc::mem_fun(*this,
+              &LogWindow::on_treeview_row_activated) );
+
+
+  /*****************************************************************************
+  * Create the Tree model and connect the handler to the dispatcher.
+  *****************************************************************************/
   m_refTreeModel = Gtk::ListStore::create(l_columns);
-  m_TreeView.set_model(m_refTreeModel);
-   // Connect the handler to the dispatcher.
+  m_TreeView.set_model(m_refTreeModel); 
   m_Dispatcher.connect(sigc::mem_fun(*this, &LogWindow::on_notification_from_worker_thread));
+
   
-  //Add the TreeView's view columns
-  //This number will be shown with the default numeric formatting.
+  /*****************************************************************************
+  * Add the TreeView's view columns
+  * This number will be shown with the default numeric formatting.
+  *****************************************************************************/
   m_TreeView.append_column("Time", l_columns.Time);
   m_TreeView.append_column("Layer", l_columns.Layer);
   m_TreeView.append_column("Direction", l_columns.Direction);
   m_TreeView.append_column("UE ID", l_columns.UE_ID);
   m_TreeView.append_column("INFO", l_columns.Info);
-
   
 
-  m_VBox.pack_end(Frame_TextView, Gtk::PACK_EXPAND_WIDGET, 5);
-  m_TextBox.set_border_width(10);
-  Frame_TextView.add(m_TextBox);
-  text_ScrolledWindow.add(m_TextView);
-  text_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
-  m_TextBox.pack_start(text_ScrolledWindow);
-
-  m_TreeView.signal_row_activated().connect(sigc::mem_fun(*this,
-              &LogWindow::on_treeview_row_activated) );
-
+  /*****************************************************************************
+  * Create text buffer for long message display
+  *****************************************************************************/
+  m_refTextBuffer = Gtk::TextBuffer::create();
+ 
   show_all_children();
 }
 
@@ -298,7 +321,6 @@ void LogWindow::on_treeview_row_activated(const Gtk::TreeModel::Path& path,
     std::string strText;
     int row_n = row_sel[l_columns.Row_Number];
     m_Worker.get_text(row_n, strText);
-    m_refTextBuffer = Gtk::TextBuffer::create();
     m_refTextBuffer->set_text(strText);
     m_TextView.set_buffer(m_refTextBuffer);
   }
