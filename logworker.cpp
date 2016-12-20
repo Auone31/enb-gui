@@ -1,5 +1,4 @@
 #include "logworker.h"
-#include <chrono>
 
 LogWorker::LogWorker() :
   m_Mutex(),
