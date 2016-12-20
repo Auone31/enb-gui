@@ -24,6 +24,7 @@ public:
   bool has_stopped() const;
   bool has_paused() const;
   void notify_thread();
+  void resume_thread();
   
 
 private:

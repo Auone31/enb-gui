@@ -1,4 +1,5 @@
 #include "logworker.h"
+#include <chrono>
 
 LogWorker::LogWorker() :
   m_Mutex(),
@@ -65,8 +66,11 @@ void LogWorker::get_text(int msg_num, std::string & text) const
 ****************************************************************************/ 
 void LogWorker::stop_work()
 {
-  std::lock_guard<std::mutex> lock(m_Mutex);
-  m_shall_stop = true;
+  {
+    std::lock_guard<std::mutex> lock(m_Mutex);
+    m_shall_stop = true;
+  }
+  wait_condition.notify_all();
 }
 
 
@@ -152,8 +156,8 @@ void LogWorker::get_line(char * buff, int l, string& line)
 * Function: notify_thread()
 *****************************************************************************
 *
-* Notifies the worker thread to resume work
-*
+* Notifies the worker thread to resume work after caller finished printing
+* in TreeView
 *
 ****************************************************************************/ 
 void LogWorker::notify_thread()
@@ -164,6 +168,26 @@ void LogWorker::notify_thread()
   }
   wait_condition.notify_all();
 }
+
+
+/****************************************************************************
+* Function: resume_thread()
+*****************************************************************************
+*
+* Notifies the worker thread to resume work after a pause occurred
+*
+*
+****************************************************************************/ 
+void LogWorker::resume_thread()
+{
+  {
+    std::lock_guard<std::mutex> lock(m_Mutex);
+    resume_work = true;
+    m_shall_pause = false;
+  }
+  wait_condition.notify_all();
+}
+
 
 /****************************************************************************
 * Function: do_work(LogWindow * caller)
@@ -213,10 +237,9 @@ if (log_file)
         if(!resume_work || m_shall_pause)
         {
           //Wait for notification from the caller
-          wait_condition.wait(lock, [this]{return resume_work;});
-          m_shall_pause = false;
+          wait_condition.wait(lock, [this]{return (resume_work && !m_shall_pause) || m_shall_stop;});
         }
-
+        
         //Sort pulled line in correct format
         log_msgs[msgcnt].sort_message(line);
 
@@ -247,7 +270,7 @@ if (log_file)
   } 
   {
     std::unique_lock<std::mutex> lock(m_Mutex);
-    wait_condition.wait(lock, [this]{return resume_work;});
+    wait_condition.wait(lock, [this]{return resume_work || m_shall_stop;});
     m_shall_stop = false;  
     m_has_stopped = true;
     counter = 0;
