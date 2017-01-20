@@ -6,6 +6,7 @@
 #include <condition_variable>
 #include "logMessage.h"
 
+
 class LogWindow;
 
 class LogWorker

@@ -1,19 +1,27 @@
 #include "logwindow.h"
-#include "logworker.h"
 #include "logworker.cpp"
 
 LogWindow::LogWindow()
 : m_VBox(Gtk::ORIENTATION_HORIZONTAL),
   m_TreeBox(Gtk::ORIENTATION_HORIZONTAL),
   m_TextBox(Gtk::ORIENTATION_HORIZONTAL),
+  Button_Box(Gtk::ORIENTATION_VERTICAL),
   Frame_TreeView(),
   Frame_TextView("Details"),
+  Frame_button_box("Control"),
+  Frame_check_button_box("Layer Selection"),
   m_Button_Start("Start"),
-  m_Button_MAC("MAC"),
-  m_Button_RRC("RRC"),
   m_Button_PR("Pause"),
   Stop_Button("Stop"),
   Quit_Button("Quit", true),
+  C_Button_PHY("PHY"),
+  C_Button_MAC("MAC"), 
+  C_Button_RLC("RLC"), 
+  C_Button_PDCP("PDCP"),
+  C_Button_RRC("RRC"), 
+  C_Button_NAS("NAS"), 
+  C_Button_S1AP("S1AP"), 
+  C_Button_X2("X2AP"),
   m_Dispatcher(),
   m_Worker(),
   m_WorkerThread(nullptr)
@@ -23,6 +31,18 @@ LogWindow::LogWindow()
   set_default_size(2000, 1000);
 
   add(m_VBox);
+
+
+  /*****************************************************************************
+  * Add vertical button box to the main box, then add frames for buttons and 
+  * check buttons to the main vertical button box. Finally, add button boxes
+  * for the buttons and check buttons to their corresponding frames.
+  *****************************************************************************/
+  m_VBox.pack_start(Button_Box, Gtk::PACK_SHRINK, 1);
+  Button_Box.pack_start(Frame_button_box, Gtk::PACK_SHRINK, 1);
+  Button_Box.pack_start(Frame_check_button_box, Gtk::PACK_EXPAND_WIDGET, 1);
+  Frame_button_box.add(m_ButtonBox);
+  Frame_check_button_box.add(check_button_box);
 
 
   /*****************************************************************************
@@ -41,7 +61,7 @@ LogWindow::LogWindow()
   /*****************************************************************************
   * Add the text view frame with scrollable window
   *****************************************************************************/
-  m_VBox.pack_end(Frame_TextView, Gtk::PACK_EXPAND_WIDGET, 5);
+  m_VBox.pack_start(Frame_TextView, Gtk::PACK_EXPAND_WIDGET, 5);
   m_TextBox.set_border_width(10);
   Frame_TextView.add(m_TextBox);
   text_ScrolledWindow.add(m_TextView);
@@ -52,33 +72,56 @@ LogWindow::LogWindow()
   /*****************************************************************************
   * Add buttons 
   *****************************************************************************/
-  m_TreeBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(m_Button_Start, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(m_Button_PR, Gtk::PACK_SHRINK);
-  m_ButtonBox.pack_start(Stop_Button, Gtk::PACK_SHRINK);
+  m_ButtonBox.pack_end(Stop_Button, Gtk::PACK_SHRINK);
   m_ButtonBox.pack_start(Quit_Button, Gtk::PACK_SHRINK);
-  m_ButtonBox.pack_start(m_Button_MAC, Gtk::PACK_SHRINK);
-  m_ButtonBox.pack_start(m_Button_RRC, Gtk::PACK_SHRINK);
+  m_ButtonBox.set_spacing(1);
   m_ButtonBox.set_border_width(20);
-  m_ButtonBox.set_spacing(10);
   m_ButtonBox.set_layout(Gtk::BUTTONBOX_START);
-
+  
 
   /*****************************************************************************
-  * Connect Signals to buttons 
+  * Add check buttons 
+  *****************************************************************************/
+  check_button_box.pack_start(C_Button_PHY, Gtk::PACK_SHRINK);
+  check_button_box.pack_start(C_Button_MAC, Gtk::PACK_SHRINK);
+  check_button_box.pack_start(C_Button_RLC, Gtk::PACK_SHRINK);
+  check_button_box.pack_start(C_Button_PDCP, Gtk::PACK_SHRINK);
+  check_button_box.pack_start(C_Button_RRC, Gtk::PACK_SHRINK);
+  check_button_box.pack_start(C_Button_NAS, Gtk::PACK_SHRINK);
+  check_button_box.pack_start(C_Button_S1AP, Gtk::PACK_SHRINK);
+  check_button_box.pack_start(C_Button_X2, Gtk::PACK_SHRINK);
+  check_button_box.set_border_width(20);
+  check_button_box.set_layout(Gtk::BUTTONBOX_START);
+
+  /*****************************************************************************
+  * Connect Signals to buttons and check buttons
   *****************************************************************************/
   m_Button_Start.signal_clicked().connect(sigc::mem_fun(*this,
               &LogWindow::on_button_start) );
-  m_Button_MAC.signal_clicked().connect(sigc::mem_fun(*this,
-              &LogWindow::on_button_quit) );
-  m_Button_RRC.signal_clicked().connect(sigc::mem_fun(*this,
-              &LogWindow::on_button_quit) );
   m_Button_PR.signal_clicked().connect(sigc::mem_fun(*this,
               &LogWindow::on_PR_button_clicked) );
   Stop_Button.signal_clicked().connect(sigc::mem_fun(*this,
               &LogWindow::on_stop_button_clicked) );
   Quit_Button.signal_clicked().connect(sigc::mem_fun(*this,
               &LogWindow::on_button_quit) );
+  C_Button_PHY.signal_clicked().connect(sigc::mem_fun(*this,
+              &LogWindow::on_check_button) );
+  C_Button_MAC.signal_clicked().connect(sigc::mem_fun(*this,
+              &LogWindow::on_check_button) );
+  C_Button_RLC.signal_clicked().connect(sigc::mem_fun(*this,
+              &LogWindow::on_check_button) );
+  C_Button_PDCP.signal_clicked().connect(sigc::mem_fun(*this,
+              &LogWindow::on_check_button) );
+  C_Button_RRC.signal_clicked().connect(sigc::mem_fun(*this,
+              &LogWindow::on_check_button) );
+  C_Button_NAS.signal_clicked().connect(sigc::mem_fun(*this,
+              &LogWindow::on_check_button) );
+  C_Button_S1AP.signal_clicked().connect(sigc::mem_fun(*this,
+              &LogWindow::on_check_button) );
+  C_Button_X2.signal_clicked().connect(sigc::mem_fun(*this,
+              &LogWindow::on_check_button) );
 
 
   /*****************************************************************************
@@ -326,4 +369,9 @@ void LogWindow::on_treeview_row_activated(const Gtk::TreeModel::Path& path,
     m_refTextBuffer->set_text(strText);
     m_TextView.set_buffer(m_refTextBuffer);
   }
+}
+
+void LogWindow::on_check_button()
+{
+
 }

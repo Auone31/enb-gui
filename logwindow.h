@@ -17,8 +17,7 @@ private:
   
   //Signal handlers:
   void on_button_start();
-  void on_button_mac();
-  void on_button_rrc();
+  void on_check_button();
   void on_PR_button_clicked();
   void on_button_quit();
   void on_stop_button_clicked();
@@ -44,7 +43,7 @@ private:
 
 
   //Child widgets:
-  Gtk::Box m_VBox, m_TreeBox, m_TextBox;
+  Gtk::Box m_VBox, Button_Box, m_TreeBox, m_TextBox;
   //Gtk::Paned m_VBox;
   Log_Columns l_columns;
 
@@ -55,10 +54,11 @@ private:
   Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer;
   Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
   Glib::RefPtr<Gtk::TreeSelection> refTreeSelection;
-  Gtk::VButtonBox m_ButtonBox;
-  Gtk::Button m_Button_Start, m_Button_MAC, m_Button_RRC, m_Button_PR, Stop_Button, Quit_Button;
+  Gtk::VButtonBox m_ButtonBox, check_button_box;
+  Gtk::Button m_Button_Start, m_Button_PR, Stop_Button, Quit_Button;
+  Gtk::CheckButton C_Button_PHY, C_Button_MAC, C_Button_RLC, C_Button_PDCP, C_Button_RRC, C_Button_NAS, C_Button_S1AP, C_Button_X2;
   
-  Gtk::Frame Frame_TreeView, Frame_TextView;
+  Gtk::Frame Frame_TreeView, Frame_TextView, Frame_button_box, Frame_check_button_box;
   Glib::Dispatcher m_Dispatcher;
   LogWorker m_Worker;
   std::thread* m_WorkerThread;
